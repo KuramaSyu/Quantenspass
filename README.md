@@ -1,6 +1,6 @@
-### Quantencomputer in der Kryptographie
+# Quantencomputer in der Kryptographie
 
-# Forschungsfrage 1:
+### Forschungsfrage 1:
 
 
-# Forschungsfrage 2:
+### Forschungsfrage 2:
