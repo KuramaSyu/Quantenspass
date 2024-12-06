@@ -1,2 +1,43 @@
-
+# Compiled PDF and other output files
 *.pdf
+*.dvi
+*.ps
+*.log
+*.synctex.gz
+*.out
+*.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.aux
+*.nav
+*.snm
+*.vrb
+
+# Intermediate files for other tools
+*.lof
+*.lot
+*.lol
+*.spl
+
+# Editor backups and swap files
+*~
+*.swp
+*.bak
+*.backup
+*.tmp
+
+# Specific to TeXShop
+*.synctex(busy)
+
+# Specific to Kile
+*.backup
+
+# Specific to Overleaf
+.trash/
+output/
+
+# Other OS/Editor-specific files
+.DS_Store
+Thumbs.db
