@@ -1,0 +1,50 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0" version="25.0.3">
+  <diagram name="Page-1" id="pm-t9doXPkYsajfl0tn1">
+    <mxGraphModel dx="1749" dy="633" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;strokeColor=#E07A5F;fontColor=default;" edge="1" parent="1" source="ZrFbgJg00vTvZY6wPIcv-1" target="ZrFbgJg00vTvZY6wPIcv-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" edge="1" parent="1" source="ZrFbgJg00vTvZY6wPIcv-1" target="ZrFbgJg00vTvZY6wPIcv-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-1" value="&lt;div&gt;Quantencomputer in der Cryptografie und die Auswirkung auf aktuelle Verschlüsselungsmethoden&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#F2CC8F;strokeColor=#E07A5F;fontColor=#393C56;" vertex="1" parent="1">
+          <mxGeometry x="350" y="300" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" edge="1" parent="1" source="ZrFbgJg00vTvZY6wPIcv-3" target="ZrFbgJg00vTvZY6wPIcv-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" edge="1" parent="1" source="ZrFbgJg00vTvZY6wPIcv-3" target="ZrFbgJg00vTvZY6wPIcv-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-3" value="Verschlüsselungsmethoden" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#F2CC8F;strokeColor=#E07A5F;fontColor=#393C56;" vertex="1" parent="1">
+          <mxGeometry x="300" y="140" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" edge="1" parent="1" source="ZrFbgJg00vTvZY6wPIcv-4" target="ZrFbgJg00vTvZY6wPIcv-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-4" value="RSA - asymmetrische Verschlüsselung" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#F2CC8F;strokeColor=#E07A5F;fontColor=#393C56;" vertex="1" parent="1">
+          <mxGeometry x="140" y="30" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-6" value="AES - symmetrische Verschlüsselung" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#F2CC8F;strokeColor=#E07A5F;fontColor=#393C56;" vertex="1" parent="1">
+          <mxGeometry x="510" y="30" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" edge="1" parent="1" source="ZrFbgJg00vTvZY6wPIcv-8" target="ZrFbgJg00vTvZY6wPIcv-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-8" value="Quantencomputer erklären" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#F2CC8F;strokeColor=#E07A5F;fontColor=#393C56;" vertex="1" parent="1">
+          <mxGeometry x="-20" y="300" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrFbgJg00vTvZY6wPIcv-11" value="Shors Algorithmus" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#F2CC8F;strokeColor=#E07A5F;fontColor=#393C56;" vertex="1" parent="1">
+          <mxGeometry x="20" y="140" width="120" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
