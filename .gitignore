@@ -1,5 +1,7 @@
 # Compiled PDF and other output files
 *.pdf
+!backup/sample-sigconf-authordraft copy.pdf
+
 *.dvi
 *.ps
 *.log
