@@ -1,5 +1,84 @@
-\section{Bens Sektion -  Shor's Algorithmus}
-Berechnet einen nichttrivialen Teiler einer zusammengesetzten Zahl und 
-zählt somit zur Klasse der Faktorisierungsverfahren. Er ist einer der wichtigsten Quantenalgorithmen.\\
+\section{Shor’s Algorithmus: Funktionsweise und mathematische Grundlage}
 
- 
+Shor’s Algorithmus ist ein Quantenalgorithmus, der entwickelt wurde, um 
+effizient die Primfaktoren einer großen Zahl $N$ zu bestimmen. Dieses 
+Problem bildet die Grundlage vieler kryptografischer Verfahren wie RSA, 
+da es für klassische Computer äußerst schwierig ist, große Zahlen in 
+ihre Primfaktoren zu zerlegen. Shor’s Algorithmus hingegen nutzt die 
+Eigenschaften von Quantencomputern, um diese Aufgabe exponentiell 
+schneller zu lösen.
+
+\subsection{Ablauf des Algorithmus}
+
+\begin{enumerate}
+    \item \textbf{Auswahl einer Basis $a$:}  
+    Zunächst wird eine Zahl $a$ gewählt, wobei $1 < a < N$ gilt. Diese 
+    Basis dient als Ausgangspunkt für die nachfolgenden Berechnungen.
+
+    \item \textbf{Periodenfindung:}  
+    Der Algorithmus sucht die kleinste positive Periode $r$, sodass die 
+    Kongruenzgleichung  
+    \[
+    a^r \mod N = 1
+    \]  
+    erfüllt ist. Die Periode $r$ ist der Schlüssel zur Faktorisierung von $N$.  
+    \begin{itemize}
+        \item Es wird sichergestellt, dass $r > 0$ ist, da eine Periode von 
+        $r = 0$ keine Aussagekraft hat.
+        \item Zur Bestimmung von $r$ könnte man klassisch eine Wertetabelle 
+        für $r$ und die entsprechenden Werte $z = a^r \mod N$ erstellen. Da 
+        diese Methode jedoch ineffizient ist, wird auf einem Quantencomputer 
+        die Quanten-Fourier-Transformation (QFT) verwendet, um $r$ effizient 
+        zu berechnen.
+    \end{itemize}
+
+    \item \textbf{Verwendung der Periode $r$:}  
+    Sobald $r$ bekannt ist, wird geprüft:  
+    \begin{itemize}
+        \item Falls $r$ ungerade ist, beginnt der Algorithmus erneut mit 
+        einem anderen $a$.
+        \item Ist $r$ gerade, werden die Primfaktoren von $N$ mit den 
+        folgenden Formeln berechnet:  
+        \[
+        f_1 = \text{ggT}\left(a^{r/2} - 1, N\right) \quad \text{und} \quad f_2 = \text{ggT}\left(a^{r/2} + 1, N\right).
+        \]  
+        Der größte gemeinsame Teiler ($\text{ggT}$) wird dabei mithilfe 
+        des Euklidischen Algorithmus ermittelt.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Euklidischer Algorithmus: Beispiel zur Bestimmung des ggT}
+
+Der Euklidische Algorithmus wird verwendet, um den größten gemeinsamen 
+Teiler (ggT) zweier Zahlen effizient zu bestimmen. Anhand des Beispiels 
+$N_1 = 132$ und $N_2 = 28$ wird der Algorithmus wie folgt angewendet:
+
+\begin{enumerate}
+    \item \textbf{Schritt 1:}  
+    Teile die größere Zahl durch die kleinere und bestimme den Rest:  
+    \[
+    132 \div 28 = 4 \, \text{Rest} \, 20 \quad \Rightarrow \quad 132 = 4 \cdot 28 + 20.
+    \]
+
+    \item \textbf{Schritt 2:}  
+    Die vorherige Divisorzahl $28$ wird der neue Dividend, und der Rest $20$ wird der neue Divisor:  
+    \[
+    28 \div 20 = 1 \, \text{Rest} \, 8 \quad \Rightarrow \quad 28 = 1 \cdot 20 + 8.
+    \]
+
+    \item \textbf{Schritt 3:}  
+    Wiederhole den Vorgang, bis der Rest $0$ wird:  
+    \[
+    20 \div 8 = 2 \, \text{Rest} \, 4 \quad \Rightarrow \quad 20 = 2 \cdot 8 + 4,
+    \]  
+    \[
+    8 \div 4 = 2 \, \text{Rest} \, 0 \quad \Rightarrow \quad 8 = 2 \cdot 4 + 0.
+    \]
+\end{enumerate}
+
+Der letzte Divisor, bevor der Rest $0$ wird, ist der gesuchte größte gemeinsame Teiler:  
+\[
+\text{ggT}(132, 28) = 4.
+\]
+
+\subsection{Quantenteil des Shor Algorithmus}
