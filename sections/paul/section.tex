@@ -1,4 +1,25 @@
+\section{Kryptografie\textendash Grundlagen}
+Verschlüsselungsalgorithmen werden grundlegend in zwei Gruppen unterteilt.
+Die erste Gruppe ist symmetrische Verschlüsselung, welche Grundlegend zum Verschlüsseln von Daten
+oder Texten verwendet wird. Diese verwendet zum ver\textendash und entschlüssen den gleichen Schlüssel.
+Im Gegensatz dazu steht die asymmetrische Verschlüsselung, welche zum ver\textendash und entschlüssen
+zwei unterschiedliche Schlüssel verwendet. Diese werden Public Key (Verschlüsselung) und 
+Private Key (Entschlüsselung) genannt. Als Beispiel dazu folgend der HTTPS\textendash Verbindungsaufbau
+\begin{enumerate}
+    \item Der Handshakeprozess: Dieser Prozess erfolgt mit asymmetrischer Verschlüsselung. 
+    Am Anfang des Verbindungsaufbau fordert der Client
+    das Zertifikat des Servers an. Folgend prüft der Client das Zertifikat über eine Zertifizierungsstelle.
+    Folgend wird für die weitere Kommunikation ein Schlüssel vom Client generiert. Dieser wird
+    mit dem öffentlichen Schlüssel des Servers verschlüsselt. Der Server wird diesen folgend mithilfe des 
+    eigenen Private Keys entschlüsseln und für die folgende symmetrische Verschlüsselung nutzen. Damit
+    wurde auf sichere Weise ein "Passwort" übertragen.
+    \item Kommunikation: In diesem Schritt erfolgt das Senden von tatsächlichen Daten. Zum Beispiel den
+    HTML Code der Seite. Zum ver\textendash und entschlüsseln dieser Daten wird der Schlüssel verwendet,
+    welcher in Schritt 1 generiert wurde.
+\end{enumerate}
 \section{Pauls Sektion - RSA}
-Ist assymetrische Verschlüsselung.\\
+RSA ist ein asymmetrischer Verschlüsselungsalgorithmus. Die Sicherheit von RSA beruht
+auf der Faktorisierung von Primzahlen, da dieses ein NP-Hard Problem ist\cite{moolchad_leveraging_nodate}.
+
 
  
