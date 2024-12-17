@@ -1,25 +1,23 @@
-\section{Infos}
+\section{AES Algorythmus}
 \setlength{\parindent}{0pt}
 
 Advanced Encryption Standard (AES) ist ein Symmetrischer Blockchiffre Algorythmus zum 
 Verschlüsseln von sensiblen daten. Z.B(VPN verbindungen, HTTPS anfragen sowie WLAN Verschlüsselungen(WPA2)).
+Dieser algorythmus wurde von der National Institute of Standards and Technology (NIST) im Jahr 2001 entwikelt. 
 Die Schlüssellängen beträgt entweder 128, 192 oder 256 Bit. Je länger der Schlüssel ist desto sicherher ist die Verschlüsselung.
-Die zu verschlüsselnde Datengröße beträgt jeweils pro Block 128 Bit.
+Die zu verschlüsselnde Datengröße beträgt immer einen festen wert 128 Bit pro Block, da AES eine Blockchiffre ist und keine Stromchiffre,
+ welche immer einen bit oder byte nimmt und diesen verschlüsselt 
 AES basiert auf mehreren Runden von Transformationen, die Daten verschlüsseln. Die Anzahl der Runden hängt von der Schlüssellänge ab.
+Pro Runde wird ein neuer Schlüssel verwendet, einen Rundenschlüssel, welcher anhand des Hauptschlüssels berechnet wird.
 \begin{itemize}
     \item 128-bit key \textendash\ 10 Runden
     \item 192-bit key \textendash\ 12 Runden
-    \item 256-bit key \textendash\ 14 Runden
+    \item 256-bit key \textendash\ 14 Runden\\
 \end{itemize}
 
-Es gibt jeweils einen anderen Schlüssel pro Runde, welcher von dem Hauptschlüssel berechnet wird.\\
 
-Erfunden vom National Institute of Standards and Technology (NIST) im Jahr 2001.\\
 
-AES ist ein Block Cipher.\\
-Ein Block Cipher nimmt einen festen Bit-Wert ein und gibt einen festen Bit-Wert aus.\\
-
-AES-Blöcke sind in einem 4 x 4 Byte (128 Bit) Block angelegt:\\
+AES-Blöcke sind in einem 4 x 4 Byte (128 Bit) Block angelegt:
 
 \[
 \begin{bmatrix}
@@ -30,7 +28,7 @@ c_3  & c_7  & c_{11} & c_{15}
 \end{bmatrix}
 \]
 
-Jede Verschlüsselungsrunde besteht aus 4 Schritten:\\
+Jede Verschlüsselungsrunde besteht aus 4 Schritten:
 \begin{itemize}
     \item SubBytes
     \item ShiftRows
@@ -38,7 +36,7 @@ Jede Verschlüsselungsrunde besteht aus 4 Schritten:\\
     \item Add Round Key
 \end{itemize}
 
-Die letzte Runde hat keinen MixColumns-Schritt.\\
+Sobald AES in der letzten runde der verschlüsselung ist wird der MixColumns schritt übersprungen, um die entschlüsselung zu ermöglichen.\\
 
 \subsection{SubBytes}
 
