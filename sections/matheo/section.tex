@@ -1,12 +1,16 @@
 \section{Infos}
 \setlength{\parindent}{0pt}
 
-Symmetrische Blockchiffre\\
-Schlüssellängen von 128, 192 oder 256 Bit\\
-Die zu verschlüsselnde Datengröße beträgt jeweils pro Block 128 Bit.\\
-
-Anwendungen in VPNs, HTTPS und WLAN-Verschlüsselung (z. B. WPA2).\\
-AES basiert auf mehreren Runden von Transformationen, die Daten verschlüsseln. Die Anzahl der Runden hängt von der Schlüssellänge ab (128-Bit-Schlüssel: 10 Runden).\\
+Advanced Encryption Standard (AES) ist ein Symmetrischer Blockchiffre Algorythmus zum 
+Verschlüsseln von sensiblen daten. Z.B(VPN verbindungen, HTTPS anfragen sowie WLAN Verschlüsselungen(WPA2)).
+Die Schlüssellängen beträgt entweder 128, 192 oder 256 Bit. Je länger der Schlüssel ist desto sicherher ist die Verschlüsselung.
+Die zu verschlüsselnde Datengröße beträgt jeweils pro Block 128 Bit.
+AES basiert auf mehreren Runden von Transformationen, die Daten verschlüsseln. Die Anzahl der Runden hängt von der Schlüssellänge ab.
+\begin{itemize}
+    \item 128-bit key \textendash\ 10 Runden
+    \item 192-bit key \textendash\ 12 Runden
+    \item 256-bit key \textendash\ 14 Runden
+\end{itemize}
 
 Es gibt jeweils einen anderen Schlüssel pro Runde, welcher von dem Hauptschlüssel berechnet wird.\\
 
@@ -36,6 +40,10 @@ Jede Verschlüsselungsrunde besteht aus 4 Schritten:\\
 
 Die letzte Runde hat keinen MixColumns-Schritt.\\
 
+\subsection{SubBytes}
+
+\subsection{Shift Rows}
+
 \noindent
 \flushleft
 \(
@@ -54,4 +62,5 @@ c_{15} & c_{12} & c_{13} & c_{14}
 \end{bmatrix}
 \)
 \flushleft
-
+\subsection{MixColumns}
+\subsection{Add Round Key}

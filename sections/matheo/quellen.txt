@@ -1,3 +1,7 @@
 https://www.geeksforgeeks.org/advanced-encryption-standard-aes/
 
 https://www.geeksforgeeks.org/block-cipher-modes-of-operation/
+
+https://www.sdxcentral.com/security/definitions/what-is-encryption-definition/what-is-virtual-private-network-vpn/what-is-advanced-encryption-standard-aes-definition/
+
+https://www.youtube.com/watch?v=23H_kaE8DMk
