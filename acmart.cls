@@ -682,9 +682,7 @@
   \RequirePackage{draftwatermark}
   \SetWatermarkFontSize{0.5in}
   \SetWatermarkColor[gray]{.9}
-  \SetWatermarkText{\parbox{12em}{\centering
-      Unpublished working draft.\\
-      Not for distribution.}}
+  \SetWatermarkText{\parbox{12em}{\centering}}
 \else
   \if@ACM@sigchiamode
     \if@ACM@nonacm\else
@@ -2227,8 +2225,7 @@
     \if@ACM@acmcp\else
     \footnotetextcopyrightpermission{%
     \if@ACM@authordraft
-        \raisebox{-2ex}[\z@][\z@]{\makebox[0pt][l]{\large\bfseries
-            Unpublished working draft. Not for distribution.}}%
+        \raisebox{-2ex}[\z@][\z@]{\makebox[0pt][l]{\large\bfseries}}%
        \color[gray]{0.9}%
     \fi
     \parindent\z@\parskip0.1\baselineskip
