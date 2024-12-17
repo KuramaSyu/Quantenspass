@@ -13,6 +13,16 @@ m(x)= x^8 +x^4 +x^3 +x +1
 
 Das Polynom b(x) ist die multiplikative Inverse von a(x).
 
-dies wird berechnet mit dem euklidischen Algorithmus 
+dies wird berechnet mit dem erweiterten euklidischen Algorithmus 
+
+es wird polinomdivision verwendet bis der rest 1 ist 
+danach wird  Rücksubstitution angewendet. rückwerts einsetzten der divisionen um die lineare Kombination zu finden und somit b(x)
+
+am ende ist b(x)=x^6 +x^5 +x^3 +x +1
+
+
+
+
+
 
 https://de.wikipedia.org/wiki/Erweiterter_euklidischer_Algorithmus
