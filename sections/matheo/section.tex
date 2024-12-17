@@ -1,5 +1,57 @@
-\section{infos}
-symmetrische Blockchiffre\\
+\section{Infos}
+\setlength{\parindent}{0pt}
+
+Symmetrische Blockchiffre\\
 Schlüssellängen von 128, 192 oder 256 Bit\\
-Anwendungen in VPNs, HTTPS und WLAN-Verschlüsselung (z. B. WPA2)\\
-AES basiert auf mehreren Runden von Transformationen, die Daten verschlüsseln. Die Anzahl der Runden hängt von der Schlüssellänge ab\\
+Die zu verschlüsselnde Datengröße beträgt jeweils pro Block 128 Bit.\\
+
+Anwendungen in VPNs, HTTPS und WLAN-Verschlüsselung (z. B. WPA2).\\
+AES basiert auf mehreren Runden von Transformationen, die Daten verschlüsseln. Die Anzahl der Runden hängt von der Schlüssellänge ab (128-Bit-Schlüssel: 10 Runden).\\
+
+Es gibt jeweils einen anderen Schlüssel pro Runde, welcher von dem Hauptschlüssel berechnet wird.\\
+
+Erfunden vom National Institute of Standards and Technology (NIST) im Jahr 2001.\\
+
+AES ist ein Block Cipher.\\
+Ein Block Cipher nimmt einen festen Bit-Wert ein und gibt einen festen Bit-Wert aus.\\
+
+AES-Blöcke sind in einem 4 x 4 Byte (128 Bit) Block angelegt:\\
+
+\[
+\begin{bmatrix}
+c_0  & c_4  & c_8  & c_{12} \\
+c_1  & c_5  & c_9  & c_{13} \\
+c_2  & c_6  & c_{10} & c_{14} \\
+c_3  & c_7  & c_{11} & c_{15}
+\end{bmatrix}
+\]
+
+Jede Verschlüsselungsrunde besteht aus 4 Schritten:\\
+\begin{itemize}
+    \item SubBytes
+    \item ShiftRows
+    \item MixColumns
+    \item Add Round Key
+\end{itemize}
+
+Die letzte Runde hat keinen MixColumns-Schritt.\\
+
+\noindent
+\flushleft
+\(
+\begin{bmatrix}
+c_0  & c_1  & c_2  & c_3  \\
+c_4  & c_5  & c_6  & c_7  \\
+c_8  & c_9  & c_{10} & c_{11} \\
+c_{12} & c_{13} & c_{14} & c_{15}
+\end{bmatrix}
+\quad \rightarrow \quad
+\begin{bmatrix}
+c_0  & c_1  & c_2  & c_3  \\
+c_5  & c_6  & c_7  & c_4  \\
+c_{10} & c_{11} & c_8  & c_9  \\
+c_{15} & c_{12} & c_{13} & c_{14}
+\end{bmatrix}
+\)
+\flushleft
+
