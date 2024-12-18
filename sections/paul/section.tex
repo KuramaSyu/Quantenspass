@@ -1,25 +1,78 @@
+
+
+
 \section{Kryptografie\textendash Grundlagen}
 Verschlüsselungsalgorithmen werden grundlegend in zwei Gruppen unterteilt.
 Die erste Gruppe ist symmetrische Verschlüsselung, welche Grundlegend zum Verschlüsseln von Daten
-oder Texten verwendet wird. Diese verwendet zum ver\textendash und entschlüssen den gleichen Schlüssel.
-Im Gegensatz dazu steht die asymmetrische Verschlüsselung, welche zum ver\textendash und entschlüssen
+oder Texten verwendet wird. Diese verwendet zum ver\textendash\ und entschlüssen den gleichen Schlüssel.
+Im Gegensatz dazu steht die asymmetrische Verschlüsselung, welche zum ver\textendash\ und entschlüssen
 zwei unterschiedliche Schlüssel verwendet. Diese werden Public Key (Verschlüsselung) und 
-Private Key (Entschlüsselung) genannt. Als Beispiel dazu folgend der HTTPS\textendash Verbindungsaufbau
+Private Key (Entschlüsselung) genannt. Als Beispiel, für einen Verwendungszweck von sowhl symmetrischer ans auch 
+asymmetrischer Verschlüsselung folgend der HTTPS\textendash Verbindungsaufbau
 \begin{enumerate}
     \item Der Handshakeprozess: Dieser Prozess erfolgt mit asymmetrischer Verschlüsselung. 
-    Am Anfang des Verbindungsaufbau fordert der Client
+    Am Anfang des Verbindungsaufbaus fordert der Client
     das Zertifikat des Servers an. Folgend prüft der Client das Zertifikat über eine Zertifizierungsstelle.
     Folgend wird für die weitere Kommunikation ein Schlüssel vom Client generiert. Dieser wird
     mit dem öffentlichen Schlüssel des Servers verschlüsselt. Der Server wird diesen folgend mithilfe des 
     eigenen Private Keys entschlüsseln und für die folgende symmetrische Verschlüsselung nutzen. Damit
-    wurde auf sichere Weise ein "Passwort" übertragen.
+    wurde auf sichere Weise ein \anf{Passwort} übertragen.
     \item Kommunikation: In diesem Schritt erfolgt das Senden von tatsächlichen Daten. Zum Beispiel den
-    HTML Code der Seite. Zum ver\textendash und entschlüsseln dieser Daten wird der Schlüssel verwendet,
+    HTML Code einer Seite. Zum ver\textendash\ und entschlüsseln dieser Daten wird der Schlüssel verwendet,
     welcher in Schritt 1 generiert wurde.
 \end{enumerate}
-\section{Pauls Sektion - RSA}
-RSA ist ein asymmetrischer Verschlüsselungsalgorithmus. Die Sicherheit von RSA beruht
-auf der Faktorisierung von Primzahlen, da dieses ein NP-Hard Problem ist\cite{moolchad_leveraging_nodate}.
+\section{Funktionsweise von RSA}
+RSA ist ein asymmetrischer Verschlüsselungsalgorithmus.
+RSA wird benötigt, um eine gesicherte Kommunikation zwischen mindestens zwei Parteien aufzubauen, da 
+es andernfalls keine Möglichkeit gäbe, den Schlüssel für die symmetrische Verschlüsselung \anf{abhörsicher} zu übertragen.
+Die Sicherheit beruht darauf, dass Faktorisierung von Primzahlen, da dieses ein \anf{NP\textendash Hard} Problem ist\cite{moolchad_leveraging_nodate},
+also nicht in polynomieller Zeit gelöst werden kann. Die zwei Primfaktoren, welche für RSA benötigt werden, 
+werden folgend mit $p$ und $q$ bezeichnet, wobei $p$ und $q$ relativ Prim zueinander sind. 
+$n$ ist das Produkt dieser beiden Primfaktoren, welches bei derzeitigen RSA\textendash\ Implementierungen 
+2048 Bit lang ist. Im folgenden Beispiel wird zur Nachvollziehbarkeit für $p$ und $q$ jeweils 13 und 17 gewählt, womit
+$n = p \cdot q = 221$ ist. Als Zweites wird die Eulersche Phi\textendash\ Funktion benötigt, um 
+\[
+\phi(n) = (p-1) \cdot (q-1) = 12 \cdot 16 = 192
+\]
+zu berechnen. Folgend wird $e$ als Teil des Public Keys gewählt, wobei $e$ und $\phi(n)$ teilerfremd sind. In diesem 
+Beispiel wird $e = 23$ gewählt. Der Public Key ist damit bereits vollständig: $(e, n) = (23, 221)$. Die letzte benötigte
+Variable ist $d$, welche der erste Teil des Private Keys ist. $d$ ist das multiplikative Inverse zu $e$ modulo $\phi(n)$,
+also die Zahl für die gilt:
+\[
+d \cdot e \equiv 1 \pmod{\phi(n)}
+\]
+In diesem Fall ist $d = 167$, da $167 \cdot 23 = 3841 \equiv 1 \pmod{192}$. Der Private Key ist damit $(d, n) = (167, 221)$.
+Die Verschlüsselung erfolgt für jedes Zeichen einzeln durch:
+\[
+c = m^e \bmod n
+\]
+wobei $m$ der ASCII Code des zu verschlüsselnden Zeichens ist und $c$ der verschlüsselte Wert.
+Die Entschlüsselung erfolgt analog durch:
+\[
+m = c^d \bmod n
+\]
 
 
- 
+
+% p=13, q=17, n=221, phi=192, e=23, d=167
+% Public Key: (23, 221)
+% Private Key: (167, 221)
+% Encrypting message: Dresden
+% D[68] -> 68**23 % 221 = 204
+% r[114] -> 114**23 % 221 = 160
+% e[101] -> 101**23 % 221 = 186
+% s[115] -> 115**23 % 221 = 123
+% d[100] -> 100**23 % 221 = 42
+% e[101] -> 101**23 % 221 = 186
+% n[110] -> 110**23 % 221 = 219
+% Decrypting message: [204, 160, 186, 123, 42, 186, 219]
+% 204^167 % 221 = 68 -> D
+% 160^167 % 221 = 114 -> r
+% 186^167 % 221 = 101 -> e
+% 123^167 % 221 = 115 -> s
+% 42^167 % 221 = 100 -> d
+% 186^167 % 221 = 101 -> e
+% 219^167 % 221 = 110 -> n
+% Original Message: Dresden
+% Encrypted Message: [204, 160, 186, 123, 42, 186, 219]
+% Decrypted Message: Dresden
