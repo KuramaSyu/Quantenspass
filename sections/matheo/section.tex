@@ -46,7 +46,8 @@ wobei der exponent 8 die bit anzahl ist. jedes eingabe byte (außer 0, 0 ist ein
 Das bedeutet: $b' = b^{-1} \mod (x^8 + x^4 + x^3 + x + 1)$, wobei b das eingangs byte ist und b' das Multiplikatives Inverses von b. in AES wird standartmässig 
 das polynom $x^8 + x^4 + x^3 + x + 1$ benutzt um die S-Box zu berechnen. Nach der Bestimmung des multiplikativen Inversen wird das 
 Ergebnis einer festen linearen Transformation unterzogen, die zusätzlich eine Konstante addiert. Diese Transformation erfolgt bitweise und stellt sicher, dass die S-Box 
-nichtlinear bleibt: $s_i = A * b_i +c$ wobei s_i das finaly byte ist, A eine 8×8-Matrix, die eine feste lineare Abbildung darstellt,
+nichtlinear bleibt: $s_i = A * b_i +c$ wobei s_i das final byte ist, A eine 8 x 8 Matrix, die eine feste lineare Abbildung darstellt,\\
+test\\
 
 
 
