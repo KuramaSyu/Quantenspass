@@ -43,3 +43,7 @@ output/
 # Other OS/Editor-specific files
 .DS_Store
 Thumbs.db
+
+# ignore py file
+*.py
+*.pyc
