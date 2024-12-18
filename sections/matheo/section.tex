@@ -78,7 +78,9 @@ c_{15} & c_{12} & c_{13} & c_{14}
 \text{Beispiel einer Shift Row Tabelle}
 \end{array}
 \]
-\textit{MixColumns} und \textit{Add Round Key} folgen anschließend.
 
 \subsection{MixColumns}
+MixColumns sorgt für eine Mischung der Spalten, indem jede Spalte der Matrix als Polynom im Galois-Feld \(GF(2^8)\) betrachtet wird. Jede Spalte wird mit einem festen Polynom \(a(x) = 03x^3 + 01x^2 + 01x + 02\) multipliziert, wobei die Multiplikation modulo \(x^4 + 1\) erfolgt. Dieser Schritt verteilt die Bits der Eingabe, um eine stärkere Diffusion zu gewährleisten.
+
 \subsection{Add Round Key}
+In Add Round Key wird jede Byte-Position des Blocks mit dem entsprechenden Byte des Rundenschlüssels XOR-verknüpft. Dieser Schritt sorgt dafür, dass der Hauptschlüssel in jede Runde einfließt.
