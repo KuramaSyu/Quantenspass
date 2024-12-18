@@ -1,25 +1,14 @@
-\section{AES Algorythmus}
+\section{AES Algorithmus}
 \setlength{\parindent}{0pt}
 
-
-Advanced Encryption Standard (AES) ist ein Symmetrischer Blockchiffre Algorythmus zum 
-Verschlüsseln von sensiblen daten. Z.B(VPN verbindungen, HTTPS anfragen sowie WLAN Verschlüsselungen(WPA2)).
-Dieser algorythmus wurde von der National Institute of Standards and Technology (NIST) im Jahr 2001 entwikelt. 
-Die Schlüssellängen beträgt entweder 128, 192 oder 256 Bit. Je länger der Schlüssel ist desto sicherher ist die Verschlüsselung.
-Die zu verschlüsselnde Datengröße beträgt immer einen festen wert 128 Bit pro Block, da AES eine Blockchiffre ist und keine Stromchiffre,
- welche immer einen bit oder byte nimmt und diesen verschlüsselt 
-AES basiert auf mehreren Runden von Transformationen, die Daten verschlüsseln. Die Anzahl der Runden hängt von der Schlüssellänge ab.
-Pro Runde wird ein neuer Schlüssel verwendet, einen Rundenschlüssel, welcher anhand des Hauptschlüssels berechnet wird.
+Advanced Encryption Standard (AES) ist ein symmetrischer Blockchiffre Algorithmus zur Verschlüsselung sensibler Daten wie VPN Verbindungen, HTTPS Anfragen und WLAN (WPA2). Entwickelt wurde er 2001 vom NIST. AES arbeitet mit Schlüssellängen von 128, 192 oder 256 Bit, wobei längere Schlüssel sicherer sind. Die Blockgröße beträgt stets 128 Bit, da AES eine Blockchiffre ist. Die Anzahl der Runden hängt von der Schlüssellänge ab:
 \begin{itemize}
-    \item 128-bit key \textendash\ 10 Runden
-    \item 192-bit key \textendash\ 12 Runden
-    \item 256-bit key \textendash\ 14 Runden\\
+    \item 128 Bit: 10 Runden
+    \item 192 Bit: 12 Runden
+    \item 256 Bit: 14 Runden
 \end{itemize}
 
-
-
-AES-Blöcke sind in einem 4 x 4 Byte (128 Bit) Block angelegt:
-
+Jeder 128-Bit-Block wird als 4x4-Matrix dargestellt:
 \[
 \begin{bmatrix}
 c_0  & c_4  & c_8  & c_{12} \\
@@ -29,34 +18,23 @@ c_3  & c_7  & c_{11} & c_{15}
 \end{bmatrix}
 \]
 
-Jede Verschlüsselungsrunde besteht aus 4 Schritten:
-\begin{itemize}
-    \item SubBytes
-    \item ShiftRows
-    \item MixColumns
-    \item Add Round Key
-\end{itemize}
+Jede Runde umfasst die Schritte \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} und \textit{Add Round Key}. In der letzten Runde wird \textit{MixColumns} übersprungen.
 
-Sobald AES in der letzten runde der verschlüsselung ist wird der MixColumns schritt übersprungen, um die entschlüsselung zu ermöglichen.\\
 \subsection{S-Box}
-die S-Box (Substitution-Box) ist eine wesentliche komponente des AES und dient zur nichtlinearen Substitution von Bytes. 
-Die S-Box ist da um die Entschlüsselung von unauthentivizierten benutzen zu erschwehren und die spuren vom schlüssel, dem 
-input sowie dem verschlüsselten text zu verschleiern. Die S-Box wird vorher berechnet mit der Multiplikative Inverse im Galois-Feld GF(2⁸) 
-wobei der exponent 8 die bit anzahl ist. jedes eingabe byte (außer 0, 0 ist ein vorbestimmter wert) wird inversiert, indem das byte in das Galois-Feld GF(2⁸) eingefügt wird 
-Das bedeutet: $b' = b^{-1} \mod (x^8 + x^4 + x^3 + x + 1)$, wobei b das eingangs byte ist und b' das Multiplikatives Inverses von b. in AES wird standartmässig 
-das polynom $x^8 + x^4 + x^3 + x + 1$ benutzt um die S-Box zu berechnen. Nach der Bestimmung des multiplikativen Inversen wird das 
-Ergebnis einer festen linearen Transformation unterzogen, die zusätzlich eine Konstante addiert. Diese Transformation erfolgt bitweise und stellt sicher, dass die S-Box 
-nichtlinear bleibt: $s_i = A * b_i +c$ wobei s_i das final byte ist, A eine 8 x 8 Matrix, die eine feste lineare Abbildung darstellt,\\
-test\\
-
-
+Die S-Box (Substitution-Box) dient zur nichtlinearen Byte-Substitution, um die Beziehung zwischen Schlüssel und Chiffretext zu verschleiern. Jedes Eingangsbyte \(b\) (außer 0) wird im Galois-Feld \(GF(2^8)\) inversiert:
+\[
+b' = b^{-1} \mod (x^8 + x^4 + x^3 + x + 1)
+\]
+Dabei ist \(x^8 + x^4 + x^3 + x + 1\) das standardmäßige irreduzible Polynom. Das Ergebnis wird durch eine lineare Transformation angepasst:
+\[
+s_i = A \cdot b_i + c
+\]
+wobei \(A\) eine $8 \times 8$-Matrix ist und \(c\) eine Konstante.
 
 \subsection{SubBytes}
-in SubBytes wird jeder wert eines bytes mit einem anderen byte ausgetauscht welche in der vorherigen sbox berechnet wurden.
- Die bytes werden in dem fall als addressen benutz und dann den wert der zugehörigen addresse zugeschrieben. Z.B \\
- \begin{table}[H]
-    
-    \resizebox{0.4\textwidth}{!}{
+\textit{SubBytes} ersetzt jedes Byte des Datenblocks durch den entsprechenden Wert aus der S-Box, wobei die Bytewerte als Adressen dienen. Beispiel einer S-Box:
+\begin{table}[H]
+    \resizebox{0.3\textwidth}{!}{
     \begin{tabular}{|c|c|c|c|c|c|c|c|}
     \hline
     63 & 7C & 77 & 7B & F2 & 6B & 6F & C5 \\
@@ -80,26 +58,27 @@ in SubBytes wird jeder wert eines bytes mit einem anderen byte ausgetauscht welc
     \caption{Beispiel einer S-Box im AES-Algorithmus}
 \end{table}
 
-
-\subsection{Shift Rows}
-
-\noindent
-\flushleft
-\(
+\subsection{ShiftRows}
+\textit{ShiftRows} verschiebt die Reihen der 4 x 4-Matrix zyklisch: Die $n$-te Reihe wird um $(n-1)$ Stellen nach links verschoben.
+\[
+\begin{array}{c}
 \begin{bmatrix}
 c_0  & c_1  & c_2  & c_3  \\
 c_4  & c_5  & c_6  & c_7  \\
 c_8  & c_9  & c_{10} & c_{11} \\
 c_{12} & c_{13} & c_{14} & c_{15}
 \end{bmatrix}
-\quad \rightarrow \quad
+\quad\rightarrow\quad
 \begin{bmatrix}
 c_0  & c_1  & c_2  & c_3  \\
 c_5  & c_6  & c_7  & c_4  \\
 c_{10} & c_{11} & c_8  & c_9  \\
 c_{15} & c_{12} & c_{13} & c_{14}
-\end{bmatrix}
-\)
-\flushleft
+\end{bmatrix}\\
+\text{Beispiel einer Shift Row Tabelle}
+\end{array}
+\]
+\textit{MixColumns} und \textit{Add Round Key} folgen anschließend.
+
 \subsection{MixColumns}
 \subsection{Add Round Key}
