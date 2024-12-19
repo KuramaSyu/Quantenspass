@@ -1,7 +1,7 @@
 \section{AES Algorithmus}
 \setlength{\parindent}{0pt}
 
-Advanced Encryption Standard (AES) ist ein symmetrischer Blockchiffre Algorithmus zur Verschlüsselung sensibler Daten wie VPN Verbindungen, HTTPS Anfragen und WLAN (WPA2). Entwickelt wurde er 2001 vom NIST. AES arbeitet mit Schlüssellängen von 128, 192 oder 256 Bit, wobei längere Schlüssel sicherer sind. Die Blockgröße beträgt stets 128 Bit, da AES eine Blockchiffre ist. Die Anzahl der Runden hängt von der Schlüssellänge ab:
+Advanced Encryption Standard (AES) ist ein symmetrischer Blockchiffre Algorithmus zur Verschlüsselung sensibler Daten wie VPN Verbindungen, HTTPS Anfragen und WLAN (WPA2). Entwickelt wurde er 2001 vom NIST. AES arbeitet mit Schlüssellängen von 128, 192 oder 256 Bit, wobei längere Schlüssel sicherer sind. Die Blockgröße beträgt stets 128 Bit, da AES eine Blockchiffre ist. Die Anzahl der Runden hängt von der Schlüssellänge ab: 
 \begin{itemize}
     \item 128 Bit: 10 Runden
     \item 192 Bit: 12 Runden
@@ -18,7 +18,7 @@ c_3  & c_7  & c_{11} & c_{15}
 \end{bmatrix}
 \]
 
-Jede Runde umfasst die Schritte \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} und \textit{Add Round Key}. In der letzten Runde wird \textit{MixColumns} übersprungen.
+Jede Runde umfasst die Schritte \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} und \textit{Add Round Key}. In der letzten Runde wird \textit{MixColumns} übersprungen.\cite{AES_Algorithmus_2}\cite{AES_Algorithmus_3}\cite{AES_Algorithmus}\cite{Blockchiffre}
 
 \subsection{S-Box}
 Die S-Box (Substitution-Box) dient zur nichtlinearen Byte-Substitution, um die Beziehung zwischen Schlüssel und Chiffretext zu verschleiern. Jedes Eingangsbyte \(b\) (außer 0) wird im Galois-Feld \(GF(2^8)\) inversiert:
@@ -29,7 +29,7 @@ Dabei ist \(x^8 + x^4 + x^3 + x + 1\) das standardmäßige irreduzible Polynom. 
 \[
 s_i = A \cdot b_i + c
 \]
-wobei \(A\) eine $8 \times 8$-Matrix ist und \(c\) eine Konstante.
+wobei \(A\) eine $8 \times 8$-Matrix ist und \(c\) eine Konstante.\cite{Endliche_körper}\cite{S_Box}
 
 \subsection{SubBytes}
 \textit{SubBytes} ersetzt jedes Byte des Datenblocks durch den entsprechenden Wert aus der S-Box, wobei die Bytewerte als Adressen dienen. Beispiel einer S-Box:
