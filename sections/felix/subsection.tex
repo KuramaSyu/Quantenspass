@@ -12,30 +12,31 @@ wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \
 
 \subsubsection{\textbf{Interpretation der Fourier-Transformation:}}
 \begin{itemize}
-	\item \textbf{Bedeutung des Ergebnisses:}
+	\item \textbf{Bedeutung des Ergebnisses:}\\
 	Mit den diskret Fourier-Transformierten lässt sich eine Funktion konstruieren, die an den stellen \(n = 0,\dots,N-1\) die originalen Funktionswerte liefert.
 	\[f[n] = \sum_{k=0}^{N-1}\left(\text{Re}(\hat{a}^\prime_k)\cos\left(\frac{2\pi kn}{N}\right)+\text{Im}(\hat{a}^\prime_k)\sin\left(\frac{2\pi kn}{N}\right)\right)\]
-	Wobei \(\hat{a}\) zur Vereinfachung und besseren Relation normiert wird mit \(\hat{a}^\prime = \frac{\hat{a}}{N}\).
-	Diese \(f[n]\) ist eine Summe von Cosinus- und Sinusfunktionen mit einer Frequenz von \(2\pi\cdot\frac{k}{N}\), wobei für jeden Wert \(\hat{a}^\prime_k\) der Realteil Koeffizient der jeweiligen Cosinus- und der negative Imaginärteil Koeffizient der jeweiligen Sinusfunktion ist.
+	wobei \(\hat{a}\) zur Vereinfachung und besseren Relation normiert wird mit \(\hat{a}^\prime = \frac{\hat{a}}{N}\).
+	\(f[n]\) ist eine Summe von Kosinus- und Sinusfunktionen mit einer Frequenz von \(2\pi\cdot\frac{k}{N}\), wobei für jeden Wert \(\hat{a}^\prime_k\) der Realteil Koeffizient der jeweiligen Kosinusfunktion und der negative Imaginärteil Koeffizient der jeweiligen Sinusfunktion ist.
 	Eine alternative Interpretation der Werte der diskret Fourier-Transformierten ist, das \(\left\lvert \hat{a}^\prime_k\right\rvert \) der Amplitude und die Phase \(\quad\arg(\hat{a}^\prime_k) = \arctan\left(\frac{\text{Im}(\hat{a}^\prime_k)}{\text{Re}(\hat{a}^\prime_k)}\right)\quad \) entspricht.
 	\[f[n] = \sum_{k=0}^{N-1}\left\lvert\hat{a}^\prime_k\right\rvert\cdot\cos\left(\frac{2\pi kn}{N}+\arg(\hat{a}^\prime_k)\right)\]
 	Dies ist eine Zerlegung der Eingangssequenz in Frequenzen.
-	\item \textbf{Alternative Berechnung der diskreten Fourier Transformation:}
+	\item \textbf{Alternative Berechnung der diskreten Fourier Transformation:}\\
 	Eine menschenfreundlichere Methode kann man erhalten, wenn man erhalten, indem man die Eulersche Formel anwendet:
 	\[e^{-2\pi \imath \cdot\frac{jk}{N}} = \cos\left(\frac{2\pi jk}{N}\right) + \imath\cdot\sin\left(\frac{2\pi jk}{N}\right)\]
 	Nach dieser Umstellung lässt sich folgender Algorithmus herleiten:
 	\begin{enumerate}
-		\item \textbf{Vergleichsfunktion definieren:}\\
-		Der Algorithmus funktioniert, indem man die gegebene Sequenz mit Sinus- und Cosinuskurven von verschiedenen Frequenzen vergleicht. Da der Cosinus den Real- und der Sinus den Imaginärteil stellt und diese sich nicht gegenseitig beeinflussen, kann man diese auch getrennt beachten.
+		\item \textbf{Vergleichsfunktion definieren:}\\%Assymetrische Klammern in diesen Teil sind, weil sie Intervalle sind
+		Der Algorithmus funktioniert, indem man die gegebene Sequenz mit Sinus- und Cosinuskurven von verschiedenen Frequenzen vergleicht. Da der Cosinus den Real- und der Sinus den Imaginärteil stellt und diese sich nicht gegenseitig beeinflussen, wenn \(a \in \mathbb{R}^N\), kann man diese auch getrennt beachten.
 		\[f_k(x) = \cos\left(\frac{2\pi k}{N}\cdot x\right) + \imath \cdot\sin\left(\frac{2\pi k}{N}\cdot x\right) \]
-		Die Winkelfunktionen sollen im Intervall \([0,N[\) , also im Intervall der Eingangssequenz, \(k\) ganze Perioden durchlaufen. Der Cosinus (Sinus ist analog) durchläuft eine Periode im Intervall \([0,2\pi[\) . Wenn man das Argument \(x\) mit \(2\pi\) multipliziert wird das Periodenintervall zu \([0,1[\). Durch Division mit \(N\) wird das Intervall zum verlangten \([0,N[\). Um \(k\) Perioden im Intervall zu erhalten, 
-		
-		\item \textbf{Vergleichssequenzen erstellen:}
+		Die Winkelfunktionen sollen im Intervall \([0,N)\), also im Intervall der Eingangssequenz, \(k\) ganze Perioden durchlaufen. Der Cosinus (Sinus ist analog) durchläuft eine Periode im Intervall \([0,2\pi)\). Wenn man das Argument \(x\) mit \(2\pi\), multipliziert wird das Periodenintervall zu \([0,1)\). Durch Division mit \(N\) wird das Intervall zum verlangten \([0,N)\). Um \(k\) Perioden im Intervall zu erhalten, Multipliziert man mit \(k\), sodass das Intervall \(\left[0,\frac{N}{k}\right) ~k\)-mal in \([0,N)\) passt.
+		\item \textbf{Vergleichssequenzen erstellen:}\\
+		Mit der Funktion können wir die \(k\)-te Vergleichssequenz erhalten, indem wir \(f\) an denselben Stellen wie \(a\) abtasten.
 		\[b_k = \left(f_k(0),f_k(1),\dots,f_k(N-1)\right) \]
 		\item \textbf{Vergleichen:}\\
+		Um zu erfahren, welchen Teil die \(k\)-te Frequenz in der Eingangssequenz spielt, nimmt man die Summe der Produkte von jedem Element \(a_j\) der Eingangssequenz mit den korrespondierenden \({(b_k)}_j\), d.h. das Skalarprodukt
 		\[\hat{a}_k = a \cdot b_k\]
 		\item \textbf{Spezialfall \(k = 0\):}\\
-		Für \(k = 0\) gilt \[e^{-2\pi \imath \cdot\frac{j\cdot 0}{N}} = e^0 = 1\]
+		Schon in der Ausgangsformel kann man sehen, das	für \(k = 0\) gilt: \[e^{-2\pi \imath \cdot\frac{j\cdot 0}{N}} = e^0 = 1\]
 		weshalb sich \(\hat{a}_0\) zu
 		\[\hat{a}_0 = \sum_{j=0}^{N-1} a_j\] zusammenfassen lässt. Womit \(\hat{a}^\prime_0 \) dem arithmetischen Mittel von \(a\) entspricht.
 	\end{enumerate}
@@ -56,7 +57,7 @@ wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \
 	%	test = np.arange(0,2*np.pi*i,2*np.pi*i/6)#O(n)
 	%	ao[i] = a.dot(np.cos(test))#O(n)
 	%	ao[i] += 1j*a.dot(np.sin(test))#O(n)
-	%O(n²)
+	%#O(n²)
 	%for n in ao:
 	%	print(np.round(n,5))
 \end{itemize}
