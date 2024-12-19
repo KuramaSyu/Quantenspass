@@ -4,24 +4,25 @@
 \section{Kryptografie\textendash Grundlagen}
 Verschlüsselungsalgorithmen werden grundlegend in zwei Gruppen unterteilt.
 Die erste Gruppe ist symmetrische Verschlüsselung, welche Grundlegend zum Verschlüsseln von Daten
-oder Texten verwendet wird. Diese verwendet zum ver\textendash\ und entschlüssen den gleichen Schlüssel.
-Im Gegensatz dazu steht die asymmetrische Verschlüsselung, welche zum ver\textendash\ und entschlüssen
+oder Texten verwendet wird. Diese verwendet zum Ver\textendash\ und Entschlüssen den gleichen Schlüssel.
+Im Gegensatz dazu steht die asymmetrische Verschlüsselung, welche zum Ver\textendash\ und Entschlüssen
 zwei unterschiedliche Schlüssel verwendet. Diese werden Public Key (Verschlüsselung) und 
-Private Key (Entschlüsselung) genannt. Als Beispiel, für einen Verwendungszweck von sowhl symmetrischer ans auch 
-asymmetrischer Verschlüsselung folgend der HTTPS\textendash Verbindungsaufbau
+Private Key (Entschlüsselung) genannt. Als Beispiel, für einen Verwendungszweck von sowohl symmetrischer als auch 
+asymmetrischer Verschlüsselung, ist folgend der HTTPS\textendash Verbindungsaufbau demonstriert.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.45\textwidth]{sections/paul/https_verbindungsaufbau.drawio.png}
+    \caption{Demonstration des HTTPS Verbindungsaufbaus}
+    \label{fig:http_verbindungsaufbau}
+\end{figure}
+Wie in Abbildung \ref{fig:http_verbindungsaufbau} dargestellt, erfolgt der Verbindungsaufbau, indem:
 \begin{enumerate}
-    \item Der Handshakeprozess: Dieser Prozess erfolgt mit asymmetrischer Verschlüsselung. 
-    Am Anfang des Verbindungsaufbaus fordert der Client
-    das Zertifikat des Servers an. Folgend prüft der Client das Zertifikat über eine Zertifizierungsstelle.
-    Folgend wird für die weitere Kommunikation ein Schlüssel vom Client generiert. Dieser wird
-    mit dem öffentlichen Schlüssel des Servers verschlüsselt. Der Server wird diesen folgend mithilfe des 
-    eigenen Private Keys entschlüsseln und für die folgende symmetrische Verschlüsselung nutzen. Damit
-    wurde auf sichere Weise ein \anf{Passwort} übertragen.
-    \item Kommunikation: In diesem Schritt erfolgt das Senden von tatsächlichen Daten. Zum Beispiel den
-    HTML Code einer Seite. Zum ver\textendash\ und entschlüsseln dieser Daten wird der Schlüssel verwendet,
-    welcher in Schritt 1 generiert wurde.
+    \item Der Client unterstützte Verschlüsselungsalgorithmen an den Server sendet.
+    \item Der Server das Sicherste der unterstützten Algorithmen auswählt und das Zertifikat, welches den Public Key enthält, an den Client sendet.
+    \item Folgend generiert der Client einen symmetrischen Schlüssel, welcher mit dem Public Key des Servers verschlüsselt wird.
+    \item Beide überprüfen die Integrität des Schlüssels gefolgt von der tatsächlichen Kommunikation.
 \end{enumerate}
-\section{Funktionsweise von RSA}
+\section{Funktionsweise vom RSA Algorithmus}
 RSA ist ein asymmetrischer Verschlüsselungsalgorithmus.
 RSA wird benötigt, um eine gesicherte Kommunikation zwischen mindestens zwei Parteien aufzubauen, da 
 es andernfalls keine Möglichkeit gäbe, den Schlüssel für die symmetrische Verschlüsselung \anf{abhörsicher} zu übertragen.
@@ -42,18 +43,74 @@ also die Zahl für die gilt:
 d \cdot e \equiv 1 \pmod{\phi(n)}
 \]
 In diesem Fall ist $d = 167$, da $167 \cdot 23 = 3841 \equiv 1 \pmod{192}$. Der Private Key ist damit $(d, n) = (167, 221)$.
+Damit das Wort \anf{Dresden} tatsächlich verschlüsselt werden kann, wird dieses zu ASCII umgewandelt, wie in 
+Tabelle \ref{tab:encryption_dresden} in den ersten beiden Spalten dargestellt.
+% \begin{table}[h]
+%     \centering
+%     \begin{tabular}{|c|c|c|c|c|c|c|c|}
+%         \hline
+%         Buchstabe & D & r & e & s & d & e & n \\
+%         \hline
+%         ASCII & 68 & 114 & 101 & 115 & 100 & 101 & 110 \\
+%         \hline
+%     \end{tabular}
+%     \caption{ASCII-Werte der Buchstaben von \anf{Dresden}}
+%     \label{tab:ascii_dresden}
+% \end{table}
 Die Verschlüsselung erfolgt für jedes Zeichen einzeln durch:
 \[
 c = m^e \bmod n
 \]
 wobei $m$ der ASCII Code des zu verschlüsselnden Zeichens ist und $c$ der verschlüsselte Wert.
-Die Entschlüsselung erfolgt analog durch:
+Für das Wort \anf{Dresden} ergibt sich die Verschlüsselung zu $[204, 160, 186, 123, 42, 186, 219]$, wie in Tabelle
+\ref{tab:encryption_dresden} in den Spalten \anf{$m^e \bmod n$}  und \anf{$c$} dargestellt.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Buchstabe & m (ASCII) & $m^e \bmod n$ & $c$ \\
+        \hline
+        D & 68 & $68^{23} \bmod 221$ & 204 \\
+        r & 114 & $114^{23} \bmod 221$ & 160 \\
+        e & 101 & $101^{23} \bmod 221$ & 186 \\
+        s & 115 & $115^{23} \bmod 221$ & 123 \\
+        d & 100 & $100^{23} \bmod 221$ & 42 \\
+        e & 101 & $101^{23} \bmod 221$ & 186 \\
+        n & 110 & $110^{23} \bmod 221$ & 219 \\
+        \hline
+    \end{tabular}
+    \caption{Verschlüsselung der einzelnen Buchstaben}
+    \label{tab:encryption_dresden}
+\end{table}
+
+Die Entschlüsselung erfolgt mit dem Private Key ($d, n$) analog durch:
 \[
 m = c^d \bmod n
 \]
+wie in Tabelle \ref{tab:decryption_dresden} dargestellt ist.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        $c$ & $c^d \bmod n$ & m (ASCII) & Buchstabe \\
+        \hline
+        204 & $204^{167} \bmod 221$ & 68 & D \\
+        160 & $160^{167} \bmod 221$ & 114 & r \\
+        186 & $186^{167} \bmod 221$ & 101 & e \\
+        123 & $123^{167} \bmod 221$ & 115 & s \\
+        42 & $42^{167} \bmod 221$ & 100 & d \\
+        186 & $186^{167} \bmod 221$ & 101 & e \\
+        219 & $219^{167} \bmod 221$ & 110 & n \\
+        \hline
+    \end{tabular}
+    \caption{Entschlüsselung der einzelnen Buchstaben}
+    \label{tab:decryption_dresden}
+\end{table}
+Damit ist die Nachricht \anf{Dresden} erfolgreich verschlüsselt und wieder entschlüsselt worden.
 
 
 
+% Python output
 % p=13, q=17, n=221, phi=192, e=23, d=167
 % Public Key: (23, 221)
 % Private Key: (167, 221)
