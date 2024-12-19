@@ -43,3 +43,4 @@ output/
 # Other OS/Editor-specific files
 .DS_Store
 Thumbs.db
+.vscode/
