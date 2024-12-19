@@ -108,6 +108,11 @@
 %%\citestyle{acmauthoryear}
 %%
 %% end of the preamble, start of the body of the document source.
+
+%% EDIT VON PAUL
+\usepackage[ngerman]{babel}
+\newcommand{\anf}[1]{\glqq{}#1\grqq{}}  % Anführungszeichen
+
 \begin{document}
 
 
@@ -115,7 +120,7 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{Quantencomputer in der Kryptografie}
+\title{Auswirkungen von Quantencomputer auf aktuelle symmetrische und asymmetrische Verschlüsselungsalgorithmen am Beispiel von RSA und AES}
 
 %%
 %% The "author" command and its associated commands are used to define
@@ -223,8 +228,8 @@
 \input{sections/einleitung/section.tex}
 
 \input{sections/Daniel/section.tex}
-\input{sections/matheo/section.tex}
 \input{sections/paul/section.tex}
+\input{sections/matheo/section.tex}
 \input{sections/ben/section.tex}
 
 

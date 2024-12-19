@@ -6,7 +6,7 @@ Problem bildet die Grundlage vieler kryptografischer Verfahren wie RSA,
 da es für klassische Computer äußerst schwierig ist, große Zahlen in 
 ihre Primfaktoren zu zerlegen. Shor’s Algorithmus hingegen nutzt die 
 Eigenschaften von Quantencomputern, um diese Aufgabe exponentiell 
-schneller zu lösen.
+schneller zu lösen. \cite{shor}
 
 \subsection{Ablauf des Algorithmus}
 
@@ -43,7 +43,7 @@ schneller zu lösen.
         f_1 = \text{ggT}\left(a^{r/2} - 1, N\right) \quad \text{und} \quad f_2 = \text{ggT}\left(a^{r/2} + 1, N\right).
         \]  
         Der größte gemeinsame Teiler ($\text{ggT}$) wird dabei mithilfe 
-        des Euklidischen Algorithmus ermittelt.
+        des Euklidischen Algorithmus ermittelt. \cite{shor_klassisch} \cite{shor_klassisch2} 
     \end{itemize}
 \end{enumerate}
 
@@ -78,7 +78,7 @@ $N_1 = 132$ und $N_2 = 28$ wird der Algorithmus wie folgt angewendet:
 
 Der letzte Divisor, bevor der Rest $0$ wird, ist der gesuchte größte gemeinsame Teiler:  
 \[
-\text{ggT}(132, 28) = 4.
-\]
+\text{ggT}(132, 28) = 4. 
+\] \cite{euklid}
 
 \input{sections/felix/subsection.tex}
