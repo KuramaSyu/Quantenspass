@@ -25,6 +25,31 @@ c_3  & c_7  & c_{11} & c_{15}
 
 Jede Runde umfasst die Schritte \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} und \textit{Add Round Key}. In der letzten Runde wird \textit{MixColumns} über\-sprungen.\cite{AES_Algorithmus_2}\cite{AES_Algorithmus_3}\cite{AES_Algorithmus}\cite{Blockchiffre}
 
+\subsection{AES Ablauf Beispiel}
+\[
+\begin{array}{c}
+\begin{array}{c@{\quad\quad}c}
+\text{Originalmatrix} & \text{Shifted Rows} \\
+\begin{bmatrix}
+c_0  & c_1  & c_2  & c_3  \\
+c_4  & c_5  & c_6  & c_7  \\
+c_8  & c_9  & c_{10} & c_{11} \\
+c_{12} & c_{13} & c_{14} & c_{15}
+\end{bmatrix}
+&
+\begin{bmatrix}
+c_0  & c_1  & c_2  & c_3  \\
+c_5  & c_6  & c_7  & c_4  \\
+c_{10} & c_{11} & c_8  & c_9  \\
+c_{15} & c_{12} & c_{13} & c_{14}
+\end{bmatrix}
+\end{array} \\
+\text{Beispiel einer Shift Row Tabelle}
+\end{array}
+\]
+
+
+
 \subsection{S-Box}
 Die S-Box (Substitution-Box) dient zur nichtlinearen Byte-Substitution, um die Beziehung zwischen Schlüssel und Chiffretext zu verschleiern. Jedes Eingangsbyte \(b\) (außer 0) wird im Galois-Feld \(GF(2^8)\) inversiert:
 \[
