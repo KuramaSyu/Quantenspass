@@ -1,2 +1,39 @@
-\section{Schluss}
-Schlusstext
+\section{Fazit}
+Die Analyse der Auswirkungen von Quantencomputern auf Verschlüsselungsalgorithmen
+zeigt deutliche Bedrohungen auf die IT-Sicherheit. Insbesondere asymmetrische 
+Verschlüsselungsverfahren wie RSA sind durch Shore's Algorithmus gefährdet. 
+Der Grund liegt in der Fähigkeit von Quantencomputern, mit diesem Algorithmus
+die Primfaktoren einer Zahl, wie zum Beispiel ein 2048 Bit RSA Schlüssel, 
+effizient zu berechnen, wie in Sektion \ref{sec:shor} beschrieben wurde.\\
+Auch AES ist durch den \anf{Grover's Algorithmus} bedroht, welcher die Rechenzeit 
+halbiert, um den Schlüssel zu finden. Allerdings bietet dieser 
+nicht wie Shore's Algorithmus eine exponentiell schnellere Berechnung und ist somit
+grundlegend noch als sicher zu betrachten.\\
+Bezüglich der ersten Forschungsfrage lässt sich festhalten, dass symmetrische 
+Verschlüsselungsalgorithmen wie AES weniger stark betroffen sind als 
+asymmetrische Verfahren. Während RSA durch Shor's Algorithmus praktisch 
+gebrochen werden kann (siehe Sektion \ref{sec:shor}), bietet AES,
+wie in Sektion \ref{sec:aes} dargestellt wurde, durch seine komplexe Struktur aus SubBytes, 
+ShiftRows, MixColumns und der Rundenschlüssel auch gegenüber Quantencomputern 
+noch Sicherheit, wenn auch mit erhöhten Anforderungen an die Schlüssellänge.\\
+Die zweite Forschungsfrage hinsichtlich \anf{Store now, decrypt later-Angriffen}
+zeigt die Dringlichkeit des Problems: Selbst wenn 
+aktuelle Quantencomputer noch nicht leistungsfähig 
+genug sind, sollten Unternehmen bereits möglichst zeitnah 
+Maßnahmen ergreifen, da verschlüsselte Daten gespeichert 
+und später entschlüsselt werden könnten, wie in Sektion 
+\ref{sec:quantencomputer} dargestellt wurde.\\
+
+\subsection{Ausblick}
+Die Forschung im Bereich der Quantenkryptographie stellt eine erhebliche 
+Herausforderung für die IT-Sicherheit dar, da RSA praktisch gebrochen werden 
+kann. Auch andere weit verbreitete Alternative Algorithmen wie \anf{Elliptic Curve \textendash ED25519},
+welche in diesem Paper nicht betrachtet wurden,
+sind durch den Shor's Algorithmus gefährdet. Dies betrifft auch indirekt symmetrische
+Verschlüsselungsalgorithmen, da diese oft in Kombination 
+mit asymmetrischen Verfahren, wie in Abbildung \ref{fig:http_verbindungsaufbau} dargestellt, 
+verwendet werden. Das ist vor allem für die Kommunikationstechnik von Relevanz, da nun
+Verbindungen kompromittiert werden können, da symmetrische Schlüssel mithilfe
+von asymmetrischen Verfahren ausgetauscht werden.\\
+
+
