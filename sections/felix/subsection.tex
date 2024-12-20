@@ -6,7 +6,7 @@ DFT operiert an einer diskreten Folge an komplexen Zahlen
 
 \(a = (a_0,\dots,a_{N-1}) \in \mathbb{C}^N\) (\(a_k \in \mathbb{C}\)) und gibt eine Folge
 
-\(\hat{a} = (\hat{a}_0,\dots,\hat{a}_{N-1}) \in \mathbb{C}^N\) (genannt „diskret Fourier-Transformierte“),
+\(\hat{a} = (\hat{a}_0,\dots,\hat{a}_{N-1}) \in \mathbb{C}^N\) (genannt \anf{diskret Fourier-Transformierte})
 wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \quad \text{für}\quad k = 0,\dots,N-1\] oder als Matrix-Vektor-Produkt:
 \[\hat{a} = W\cdot a \quad \text{mit} \quad W[k,j] = e^{-2\pi \imath \cdot\frac{jk}{N}}\]
 
@@ -62,3 +62,10 @@ wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \
 	%	print(np.round(n,5))
 \end{itemize}
 \subsubsection{\textbf{Quanten-Fourier-Transformation: QFT}}~\newline
+QFT ist die Anwendung von DFT in auf Quantencomputern. Sie hat \(n\) Qubits als Eingang, womit die Eingangssequenz aus \(N = 2^n\) Basiszustände
+\begin{figure}
+	\centering
+	\includegraphics[width=0.45\textwidth]{sections/felix/Q_fourier_nqubits.png}
+	\caption{QFT für n Qubits (ohne Umkehrung der Reihenfolge der Zustände der Ausgaben)}
+	\label{fig:QFT_n_Qubits}
+\end{figure}
