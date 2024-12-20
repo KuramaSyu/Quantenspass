@@ -1,0 +1,80 @@
+\section{Der Grover-Algorithmus}
+\label{sec:grover}
+Der Grover-Algorithmus ist ein Quantenalgorithmus, der hilft, unstrukturierte Suchprobleme schneller zu lösen 
+als klassische Methoden. Im Gegensatz zu klassischen Ansätzen, die $N$ Schritte erfordern, benötigt der 
+Grover-Algorithmus nur etwa $\sqrt{N}$ Schritte, um die Lösung zu finden. Das macht ihn besonders relevant 
+für die Sicherheit symmetrischer Verschlüsselungsverfahren wie AES.
+
+\subsection{Grundprinzip}
+Der Algorithmus arbeitet mit zwei Hauptschritten, die wiederholt angewendet werden:
+\begin{itemize}
+    \item \textbf{Phasen-Inversion}: Markiert die gesuchte Lösung durch Vorzeichenwechsel.
+    \item \textbf{Spieglung am Mittelwert}: Verstärkt die Wahrscheinlichkeit, die gesuchte Lösung zu finden.
+\end{itemize}
+
+\subsection{Warum sind mehrere Iterationen nötig?}
+Wenn die gesuchte Lösung markiert wird, wird diese zunächst nur mathematisch identifiziert, indem ihre Phase 
+umgekehrt wird. Bei einer direkten Messung nach nur einem Durchlauf hätten jedoch alle Zustände noch ähnliche 
+Wahrscheinlichkeiten, und die gesuchte Lösung könnte mit geringer Wahrscheinlichkeit übersehen werden. Die 
+Spieglung am Mittelwert verstärkt deshalb gezielt die Amplitude der gesuchten Lösung, während die Amplituden der anderen 
+Zustände verringert werden. 
+
+Durch wiederholte Anwendung dieser beiden Schritte wird die Wahrscheinlichkeit, die richtige Lösung zu messen, 
+Schritt für Schritt erhöht. Nach etwa $\sqrt{N}$ Iterationen ist diese Wahrscheinlichkeit so hoch, dass die Lösung 
+mit nahezu 100\% Sicherheit gefunden wird.
+
+\subsection{Funktionsweise}
+\begin{enumerate}
+    \item \textbf{Initialisierung:} Der Algorithmus beginnt mit einer Überlagerung aller möglichen Zustände:
+        \[
+        |\psi\rangle = \frac{1}{\sqrt{N}} \sum_{x=0}^{N-1} |x\rangle.
+        \]
+
+    \item \textbf{Phasen-Inversion:} Die gesuchte Lösung $x_{\text{target}}$ wird markiert, indem ihre Phase umkehrt wird:
+        \[
+        O |x\rangle = \begin{cases} 
+            -|x\rangle & \text{wenn } x = x_{\text{target}}, \\
+            |x\rangle & \text{sonst}.
+        \end{cases}
+        \]
+
+    \item \textbf{Spieglung am Mittelwert:} Diese Operation verstärkt die Wahrscheinlichkeit der markierten Lösung:
+        \[
+        D |\psi\rangle = 2|\psi\rangle\langle\psi| - I.
+        \]
+
+    \item \textbf{Wiederholung:} Phasen-Inversion und Spieglung werden mehrfach angewendet (etwa $\sqrt{N}$-mal), um die 
+    Wahrscheinlichkeit, die richtige Lösung zu messen, zu maximieren.
+\end{enumerate}
+
+\subsection{Beispiel: Suche in einer kleinen Liste}
+Angenommen, wir suchen in einer Datenbank mit $N=4$ Einträgen nach der Lösung $x_{\text{target}}=2$. Die Schritte des 
+Grover-Algorithmus über mehrere Iterationen lassen sich wie folgt erklären:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Iteration & Zustand & vor Diffusion & nach Diffusion \\
+        \hline
+        1 & $|0\rangle$ & $0.5$ & $0.25$ \\
+        1 & $|1\rangle$ & $0.5$ & $0.25$ \\
+        1 & $|2\rangle$ & $-0.5$ & $0.75$ \\
+        1 & $|3\rangle$ & $0.5$ & $0.25$ \\
+        \hline
+        2 & $|0\rangle$ & $0.25$ & $0.125$ \\
+        2 & $|1\rangle$ & $0.25$ & $0.125$ \\
+        2 & $|2\rangle$ & $0.75$ & $0.875$ \\
+        2 & $|3\rangle$ & $0.25$ & $0.125$ \\
+        \hline
+    \end{tabular}
+    \caption{Amplitudenänderungen über zwei Iterationen im Grover-Algorithmus}
+\end{table}
+
+Nach der ersten Iteration wird die Amplitude der gesuchten Lösung ($|2\rangle$) von $-0.5$ auf $0.75$ verstärkt. 
+Nach der zweiten Iteration steigt sie weiter auf $0.875$, wodurch die Wahrscheinlichkeit, diesen Zustand zu messen, deutlich zunimmt.
+\\
+Der Grover-Algorithmus reduziert die Sicherheit symmetrischer Verschlüsselungsverfahren wie AES. Während klassische 
+Algorithmen $2^n$ Versuche benötigen, halbiert der Grover-Algorithmus diese Zahl auf $2^{n/2}$. Daher empfiehlt es sich, die 
+Schlüssellängen zu verdoppeln, um quantensichere Standards zu gewährleisten. \cite{grover}
+
