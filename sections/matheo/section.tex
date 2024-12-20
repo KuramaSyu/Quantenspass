@@ -13,6 +13,12 @@ ist. Die Anzahl der Runden hängt von der Schlüssellänge ab:
     \item 192 Bit: 12 Runden
     \item 256 Bit: 14 Runden
 \end{itemize}
+Der AES-Schlüssel kann beliebig gewählt werden, muss jedoch sicher erzeugt und geheim gehalten werden, um 
+die Integrität des Verfahrens zu gewährleisten. Häufig wird der Schlüssel durch kryptographische Verfahren 
+wie das Password-Based Encryption (PBE) oder durch den Einsatz eines sicheren Schlüsselaustauschverfahrens 
+wie Diffie-Hellman bestimmt. Der AES-Algorithmus selbst unterstützt keine eigene Schlüsselverteilung, sondern 
+nutzt stattdessen den vom Anwender oder einem sicheren Protokoll bereitgestellten Schlüssel.
+
 
 Jeder 128-Bit-Block wird als 4x4-Matrix dargestellt:
 \[
@@ -27,27 +33,7 @@ c_3  & c_7  & c_{11} & c_{15}
 Jede Runde umfasst die Schritte \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} und \textit{Add Round Key}. In der letzten Runde wird \textit{MixColumns} über\-sprungen.\cite{AES_Algorithmus_2}\cite{AES_Algorithmus_3}\cite{AES_Algorithmus}\cite{Blockchiffre}
 
 \subsection{AES Ablauf Beispiel}
-\[
-\begin{array}{c}
-\begin{array}{c@{\quad\quad}c}
-\text{Originalmatrix} & \text{Shifted Rows} \\
-\begin{bmatrix}
-c_0  & c_1  & c_2  & c_3  \\
-c_4  & c_5  & c_6  & c_7  \\
-c_8  & c_9  & c_{10} & c_{11} \\
-c_{12} & c_{13} & c_{14} & c_{15}
-\end{bmatrix}
-&
-\begin{bmatrix}
-c_0  & c_1  & c_2  & c_3  \\
-c_5  & c_6  & c_7  & c_4  \\
-c_{10} & c_{11} & c_8  & c_9  \\
-c_{15} & c_{12} & c_{13} & c_{14}
-\end{bmatrix}
-\end{array} \\
-\text{Beispiel einer Shift Row Tabelle}
-\end{array}
-\]
+
 
 
 
@@ -111,7 +97,24 @@ c_{15} & c_{12} & c_{13} & c_{14}
 \]
 
 \subsection{MixColumns}
-MixColumns sorgt für eine Mischung der Spalten, indem jede Spalte der Matrix als Polynom im Galois-Feld \(GF(2^8)\) betrachtet wird. Jede Spalte wird mit einem festen Polynom \(a(x) = 03x^3 + 01x^2 + 01x + 02\) multipliziert, wobei die Multiplikation modulo \(x^4 + 1\) erfolgt. Dieser Schritt verteilt die Bits der Eingabe, um eine stärkere Diffusion zu gewährleisten.
+MixColumns sorgt für eine Mischung der Spalten, indem jede Spalte der Matrix als Polynom im Galois-Feld 
+\(GF(2^8)\) betrachtet wird. Jede Spalte wird mit einem festen Polynom \(a(x) = 03x^3 + 01x^2 + 01x + 02\) 
+multipliziert, wobei die Multiplikation modulo \(x^4 + 1\) erfolgt. Dieser Schritt verteilt die Bits der Eingabe, 
+um eine stärkere Diffusion zu gewährleisten.
 
 \subsection{Add Round Key}
-In Add Round Key wird jede Byte-Position des Blocks mit dem entsprechenden Byte des Rundenschlüssels XOR-verknüpft. Dieser Schritt sorgt dafür, dass der Hauptschlüssel in jede Runde einfließt.
+In Add Round Key wird jede Byte-Position des Blocks mit dem entsprechenden Byte des Rundenschlüssels 
+XOR-verknüpft. Dieser Schritt sorgt dafür, dass der Hauptschlüssel in jede Runde einfließt.
+
+\subsection{Sicherheit gegenüber Quantenangriffen}
+Ein wesentlicher Vorteil von AES im Vergleich zu anderen Algorithmen, wie etwa RSA, ist seine Sicherheit 
+gegen theoretische Angriffe von Quantencomputern. Quantenalgorithmen wie Shor's Algorithmus sind in der Lage, 
+die Primfaktorzerlegung und das Diskrete Logarithmusproblem effizient zu lösen, was RSA und ähnliche Verfahren anfällig 
+für Angriffe macht. Im Gegensatz dazu beruht AES nicht auf der Schwierigkeit der Faktorisierung von Primzahlen, sondern 
+auf der sogenannten \textit{Diffusion} und \textit{Verkettung} der Daten, die von Quantencomputern nicht so leicht durchbrochen 
+werden können. Daher gilt AES auch in einer Ära der Quantencomputer als sicher, solange die Schlüssel ausreichend lang sind.
+
+
+
+
+
