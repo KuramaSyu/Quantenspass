@@ -48,6 +48,27 @@ s_i = A \cdot b_i + c
 \]
 wobei \(A\) eine $8 \times 8$-Matrix ist und \(c\) eine Konstante.\cite{Endliche_körper}\cite{S_Box}
 
+\subsection{round key}
+
+Der 128-Bit-Schlüssel wird in vier 32-Bit-Wörter $w[0], w[1], w[2], w[3]$ unterteilt. 
+Der Wert $g(w[3])$ wird durch eine zyklische Linksverschiebung von $w[3]$ berechnet, 
+gefolgt von einer Byte-Substitution jedes Bytes mittels der S-Box. Anschließend wird 
+der Rundenkonstantenwert $R_1$ hinzugefügt:
+\[
+g(w[3]) = \text{Substitute}(\text{Shift}(w[3])) \oplus R_1
+\]
+Die weiteren Wörter werden durch XOR ($\oplus$) der entsprechenden vorherigen Werte berechnet:
+\begin{align*}
+w[4] &= w[0] \oplus g(w[3]), \\
+w[5] &= w[4] \oplus w[1], \\
+w[6] &= w[5] \oplus w[2], \\
+w[7] &= w[6] \oplus w[3]
+\end{align*}
+Der erste Rundenschlüssel ergibt sich schließlich durch Kombination der Wörter $w[4], w[5], w[6], w[7]$:
+\[
+\text{Rundenschlüssel}_1 = w[4], w[5], w[6], w[7]
+\]
+
 \subsection{SubBytes}
 \textit{SubBytes} ersetzt jedes Byte des Datenblocks durch den entsprechenden Wert aus der S-Box, wobei die Bytewerte als Adressen dienen. Beispiel einer S-Box:
 \begin{table}[H]
@@ -74,6 +95,8 @@ wobei \(A\) eine $8 \times 8$-Matrix ist und \(c\) eine Konstante.\cite{Endliche
     }
     \caption{Beispiel einer S-Box im AES-Algorithmus}
 \end{table}
+
+
 
 \subsection{ShiftRows}
 \textit{ShiftRows} verschiebt die Reihen der 4 x 4-Matrix zyklisch: Die $n$-te Reihe wird um $(n-1)$ Stellen nach links verschoben.
@@ -118,3 +141,10 @@ werden können. Daher gilt AES auch in einer Ära der Quantencomputer als sicher
 
 
 
+\vspace{0.3cm} % Adds space before the PDF
+\begin{figure}
+	\centering
+	\includegraphics[width=0.45\textwidth]{sections/matheo/final.jpg}
+	\caption{test wird morgen fertig gemacht}
+	\label{fig:qualen_AES}
+\end{figure}
