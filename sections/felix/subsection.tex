@@ -1,11 +1,10 @@
 \subsection{Fourier-Transformation: Zerlegung von Signalen in Frequenzen}
-Die Fourier-Transformation ist ein Algorithmus, mit einer Komplexität von \(O\left(n^2\right) \), der häufig genutzt wird, um ein Signal in ein Spektrum von Frequenzen zu zerlegen. Die am häufigsten genutzte Variante ist die diskrete Fourier-Transformation.
+Die Fourier-Transformation ist ein Algorithmus, mit einer Komplexität von \(O\left(n^2\right) \), der häufig genutzt wird, um ein Signal in ein Spektrum von Frequenzen zu zerlegen, also in eine kontinuierliche Menge an Gewichten, sodass die kontinuierliche, gewichtete Summe aus Sinus und Kosinus Funktionen unterschiedlicher Frequenzen ist. Die am häufigsten genutzte Variante ist die diskrete Fourier-Transformation, die nicht kontinuierlich ist und somit nur endliche Frequenzen erkennt.
 
-\subsubsection{\textbf{Diskrete Fourier-Transformation: DFT}}~\newline
+\subsubsection{\textbf{Diskrete Fourier-Transformation: DFT}}\label{sec:DFT}~\newline
 DFT operiert an einer diskreten Folge an komplexen Zahlen
 
 \(a = (a_0,\dots,a_{N-1}) \in \mathbb{C}^N\) (\(a_k \in \mathbb{C}\)) und gibt eine Folge
-
 \(\hat{a} = (\hat{a}_0,\dots,\hat{a}_{N-1}) \in \mathbb{C}^N\) (genannt \anf{diskret Fourier-Transformierte})
 wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \quad \text{für}\quad k = 0,\dots,N-1\] oder als Matrix-Vektor-Produkt:
 \[\hat{a} = W\cdot a \quad \text{mit} \quad W[k,j] = e^{-2\pi \imath \cdot\frac{jk}{N}}\]
@@ -61,11 +60,50 @@ wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \
 	%for n in ao:
 	%	print(np.round(n,5))
 \end{itemize}
-\subsubsection{\textbf{Quanten-Fourier-Transformation: QFT}}~\newline
-QFT ist die Anwendung von DFT in auf Quantencomputern. Sie hat \(n\) Qubits als Eingang, womit die Eingangssequenz aus \(N = 2^n\) Basiszustände
-\begin{figure}
+\subsubsection{\textbf{Quanten-Fourier-Transformation: QFT}}\label{sec:QFT}~\newline
+QFT ist die Anwendung von \hyperref[sec:DFT]{DFT} in auf Quantencomputern. Sie hat \(n\) Qubits als Eingang, womit die Eingangssequenz aus \(N = 2^n\) Basiszuständen besteht: \(\left(|0\rangle,|1\rangle,\dots,|N-1\rangle\right)\). Der Quantenschaltkreis ist in Abbildung~\ref{fig:QFT_n_Qubits} zu sehen.
+\begin{figure}[hb]
 	\centering
 	\includegraphics[width=0.45\textwidth]{sections/felix/Q_fourier_nqubits.png}
 	\caption{QFT für n Qubits (ohne Umkehrung der Reihenfolge der Zustände der Ausgaben)}
 	\label{fig:QFT_n_Qubits}
 \end{figure}
+\\Wobei \(\left[0.x_1 x_2 \dots x_n\right]\) Notation für \(\frac{x_1}{2}+\frac{x_2}{4}+\cdots+\frac{x_n}{2^n}\) ist.
+Verwendet werden das Hadamard-Gatter \(H = \frac{1}{\sqrt{2}}\begin{pmatrix}
+	1 &  1\\
+	1 & -1
+\end{pmatrix}\) und Kontrollierte Phasengatter \(R_m = \begin{pmatrix}
+	1 & 0\\
+	0 & e^{\frac{2\pi\imath}{2^m}}\\
+\end{pmatrix}\).
+Eine Schaltung für \(3\) Qubits und somit \(2^3 = 8 = N\) ist in Abbildung~\ref{fig:QFT_3_Qubits} zu sehen.
+\begin{figure}[hb]
+	\centering
+	\includegraphics[width=0.45\textwidth]{sections/felix/Q_fourier_3qubits.png}
+	\caption{QFT für 3 Qubits (ohne Umkehrung der Reihenfolge der Zustände der Ausgaben)}
+	\label{fig:QFT_3_Qubits}
+\end{figure}
+\\Diese Schaltung lässt sich mithilfe der Identitätsmatrix \(I = \begin{pmatrix}
+	1 & 0 \\
+	0 & 1 
+\end{pmatrix}\) und der Tauschmatrix \(S = \begin{pmatrix}
+	1 & 0 & 0 & 0\\
+	0 & 0 & 1 & 0\\
+	0 & 1 & 0 & 0\\
+	0 & 0 & 0 & 1
+\end{pmatrix}\) in der Gleichung
+\begin{multline}
+	W = (S\oplus I)\cdot (I \oplus H \oplus I) \cdot (R_2 \oplus I) \cdot (I \oplus S) \cdot (I\oplus R_3)\\ \cdot (S \oplus I) \cdot (I \oplus H \oplus I) \cdot (R_2 \oplus I) \cdot (H \oplus I \oplus I)
+\end{multline}
+\[QFT_8 |x\rangle = W \cdot \left(|x_1\rangle \oplus |x_2\rangle \oplus |x_3\rangle\right)\]
+\[\text{oder auch als}\quad QFT_8 |x\rangle = \frac{1}{\sqrt{8}}\sum_{j=0}^{8-1} e^{\frac{2\pi \imath x j}{8}}|j\rangle\]
+darstellen, sodass für ein allgemeines \(N = 2^n\) gilt:
+\[QFT_N |x\rangle = \frac{1}{\sqrt{N}}\sum_{j=0}^{N-1} e^{\frac{2\pi \imath x j}{N}}|j\rangle\]
+Dies unterscheidet sich von der Formel für die \hyperref[sec:DFT]{DFT} nur
+\begin{enumerate}
+	\item in der Anwendung (auf Quantenzustände statt auf Vektoren/Sequenzen)
+	\item den Vorzeichen des Exponenten und
+	\item einen Normalisierungsfaktor (Die Linearkombination von Quantenzuständen muss immer den Betrag \(1\) haben).
+\end{enumerate}
+Trotz dieser Unterschiede enthält \(QFT_N |x\rangle\) Frequenzinformationen.\\
+Wendet man QFT auf eine von \hyperref[sec:shor]{Shor's Algorithmus} generierten Sequenz an, erhält ein Basiszustand eine signifikant höhere Wahrscheinlichkeit, der der Periode \(r\) entspricht, sodass man nach einer Messung auf diese schließen kann.
