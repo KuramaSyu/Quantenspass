@@ -1,35 +1,43 @@
-\section{Funktionsweise vom AES Algorithmus}  
-\label{sec:aes}  
-\setlength{\parindent}{0pt}  
+\section{Funktionsweise vom AES Algorithmus}
+\label{sec:aes}
+\setlength{\parindent}{0pt}
 
-Der Advanced Encryption Standard (AES) ist ein symmetrischer Blockchiffre-Algorithmus zur Verschlüsselung von Daten wie VPN, HTTPS und WLAN (WPA2). Er wurde 2001 vom NIST entwickelt und nutzt Schlüssellängen von 128, 192 oder 256 Bit, wobei längere Schlüssel sicherer sind. Die Blockgröße beträgt stets 128 Bit. Die Anzahl der Runden hängt von der Schlüssellänge ab:  
-\begin{itemize}  
-    \item 128 Bit: 10 Runden  
-    \item 192 Bit: 12 Runden  
-    \item 256 Bit: 14 Runden  
-\end{itemize}  
+Advanced Encryption Standard (AES) ist ein symmetrischer Blockchiffre Algorithmus zur 
+Verschlüsselung sensibler Daten wie VPN Verbindungen, HTTPS Anfragen 
+(siehe Abbildung \ref{fig:http_verbindungsaufbau}) und WLAN (WPA2). 
+Entwickelt wurde er 2001 vom NIST. AES arbeitet mit Schlüssellängen von 128, 192 oder 256 Bit, 
+wobei längere Schlüssel sicherer sind. Die Blockgröße beträgt stets 128 Bit, da AES eine Blockchiffre 
+ist. Die Anzahl der Runden hängt von der Schlüssellänge ab: 
+\begin{itemize}
+    \item 128 Bit: 10 Runden
+    \item 192 Bit: 12 Runden
+    \item 256 Bit: 14 Runden
+\end{itemize}
+Der AES-Schlüssel kann beliebig gewählt werden, muss jedoch sicher erzeugt und geheim gehalten werden, um 
+die Integrität des Verfahrens zu gewährleisten. Häufig wird der Schlüssel durch kryptographische Verfahren 
+wie das Password-Based Encryption (PBE) oder durch den Einsatz eines sicheren Schlüsselaustauschverfahrens 
+wie Diffie-Hellman bestimmt. Der AES-Algorithmus selbst unterstützt keine eigene Schlüsselverteilung, sondern 
+nutzt stattdessen den vom Anwender oder einem sicheren Protokoll bereitgestellten Schlüssel.
 
-Der Schlüssel wird durch Verfahren wie Password-Based Encryption (PBE) oder Diffie-Hellman bestimmt, da AES keine eigene Schlüsselverteilung unterstützt.  
 
-Jeder 128-Bit-Block wird als 4x4-Matrix dargestellt:  
+Jeder 128-Bit-Block wird als 4x4-Matrix dargestellt:
 \[
-\begin{bmatrix}  
-c_0  & c_4  & c_8  & c_{12} \\  
-c_1  & c_5  & c_9  & c_{13} \\  
-c_2  & c_6  & c_{10} & c_{14} \\  
-c_3  & c_7  & c_{11} & c_{15}  
-\end{bmatrix}  
-\]  
+\begin{bmatrix}
+c_0  & c_4  & c_8  & c_{12} \\
+c_1  & c_5  & c_9  & c_{13} \\
+c_2  & c_6  & c_{10} & c_{14} \\
+c_3  & c_7  & c_{11} & c_{15}
+\end{bmatrix}
+\]
 
-Jede Runde umfasst \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} und \textit{Add Round Key}. In der letzten Runde entfällt \textit{MixColumns}.\cite{AES_Algorithmus_2}\cite{AES_Algorithmus_3}\cite{AES_Algorithmus}\cite{Blockchiffre}  
-
+Jede Runde umfasst die Schritte \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} und \textit{Add Round Key}. In der letzten Runde wird \textit{MixColumns} über\-sprungen.\cite{AES_Algorithmus_2}\cite{AES_Algorithmus_3}\cite{AES_Algorithmus}\cite{Blockchiffre}
 
 \subsection{AES Ablauf Beispiel}
 
- % Adds space before the PDF
+\vspace{0.3cm} % Adds space before the PDF
 \begin{figure}
 	\centering
-	\includegraphics[width=0.40\textwidth]{sections/matheo/final.jpg}
+	\includegraphics[width=0.45\textwidth]{sections/matheo/final.jpg}
 	\caption{test wird morgen fertig gemacht}
 	\label{fig:qualen_AES}
 \end{figure}
