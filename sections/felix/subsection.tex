@@ -4,11 +4,10 @@ Die Fourier-Transformation ist ein Algorithmus, mit einer Komplexität von \(O\l
 \subsubsection{\textbf{Diskrete Fourier-Transformation: DFT}}\label{sec:DFT}~\newline
 DFT operiert an einer diskreten Folge an komplexen Zahlen
 
-\(a = (a_0,\dots,a_{N-1}) \in \mathbb{C}^N\) (\(a_k \in \mathbb{C}\)) und gibt eine Folge
+\(a = (a_0,\dots,a_{N-1}) \in \mathbb{C}^N\) (\(a_k \in \mathbb{C}\)) und gibt eine Folge\\
 \(\hat{a} = (\hat{a}_0,\dots,\hat{a}_{N-1}) \in \mathbb{C}^N\) (genannt \anf{diskret Fourier-Transformierte})
-wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \quad \text{für}\quad k = 0,\dots,N-1\] oder als Matrix-Vektor-Produkt:
+wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \quad \text{für}\quad k = 0,\dots,N-1\] oder als Matrix-Vektor-Produkt: %\cite{wiki_discrete_fourier_transformation}
 \[\hat{a} = W\cdot a \quad \text{mit} \quad W[k,j] = e^{-2\pi \imath \cdot\frac{jk}{N}}\]
-%\cite{wiki_discrete_fourier_transformation}
 
 \subsubsection{\textbf{Interpretation der Fourier-Transformation:}}
 \begin{itemize}
