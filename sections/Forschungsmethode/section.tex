@@ -1,36 +1,67 @@
-\section{Forschungsfrage}
-Die Studie zielt darauf ab, die technischen und organisatorischen Auswirkungen 
-von Quantencomputern auf die IT-Sicherheit zu untersuchen, mit besonderem Fokus 
-auf kryptografische Verfahren. Dabei verfolgt sie einen Mixed-Methods-Ansatz, 
-der sowohl technische Analysen als auch qualitative Befragungen kombiniert, um 
-ein umfassendes Verständnis der Risiken und Handlungsoptionen zu gewinnen.
+% \section{Forschungsfrage}
+% Die Studie zielt darauf ab, die technischen und organisatorischen Auswirkungen 
+% von Quantencomputern auf die IT-Sicherheit zu untersuchen, mit besonderem Fokus 
+% auf kryptografische Verfahren. Dabei verfolgt sie einen Mixed-Methods-Ansatz, 
+% der sowohl technische Analysen als auch qualitative Befragungen kombiniert, um 
+% ein umfassendes Verständnis der Risiken und Handlungsoptionen zu gewinnen.
 
-\subsection{Methodisches Vorgehen:}
+\section{Methodisches Vorgehen}
 
-Im Rahmen der technischen Analyse (FF1) werden Benchmarking-Tests für klassische 
-Verschlüsselungsalgorithmen wie RSA und AES auf konventionellen Systemen durchgeführt. 
-Diese Ergebnisse werden mit dokumentierten Benchmarks von Quantencomputern verglichen. 
-Zusätzlich erfolgt eine mathematische Modellierung und Extrapolation der Zeitersparnisse 
-bei verschiedenen Schlüssellängen, um kritische Schwellenwerte zu identifizieren. Die 
-Performance-Unterschiede zwischen klassischer und quantenbasierter Kryptografie werden 
-detailliert dokumentiert.
+Die Untersuchung folgt einem Mixed-Methods-Ansatz, der sowohl technische als auch organisatorische Aspekte berücksichtigt. 
+Im Rahmen der technischen Analyse (FF1) werden zwei klassische Verschlüsselungsalgorithmen, RSA und AES, auf 
+konventionellen Systemen hinsichtlich ihrer Verschlüsselungs- und Entschlüsselungszeiten analysiert. Diese 
+Tests berücksichtigen unterschiedliche Schlüssellängen und Datenmengen, um die Effizienz der Algorithmen unter 
+variierenden Bedingungen zu bewerten, welche in Tabelle \ref{tab:schluessel_datenmengen} dargestellt sind. 
+Die sehr spezifischen Datenmengen bei RSA beziehen sich auf die maximale Datenmenge pro Schlüssellaenge. 
+Am Beispiel von 4096 Bit Verschlüsselung, würde diese zu Bytes umgerechnet werden. Diesen 
+werden folgend 11 Bytes (konstant bei allen Schlüssellängen) abgezogen, da diese als sogenanntes Padding dienen. Damit ergibt sich $4096/8 - 11 = 501$. 
+Bei AES beziehen sich die Datenmengen auf gängige zu Größen, welche bei HTTPS übertragen werden, da hierbei AES mit RSA kombiniert wird 
+(Abbildung \ref{fig:http_verbindungsaufbau}).
+Die Ergebnisse werden mit dokumentierten Benchmarks von Quantenalgorithmen 
+wie Shor's und Grover's Algorithmus verglichen. Ergänzend werden analytische Methoden genutzt, um die theoretische 
+Effizienz dieser Quantenalgorithmen zu modellieren. Diese Berechnungen basieren auf dokumentierten Benchmarks 
+aktueller Quantencomputer und Zeitkomplexitätsmodellen, um kritische Schlüssellängen zu identifizieren, bei denen 
+bestehende Verschlüsselungsverfahren potenziell gefährdet sind.
 
-Die organisatorische Untersuchung (FF2) umfasst leitfadengestützte Experteninterviews 
-mit IT-Sicherheitsverantwortlichen. Der Fokus liegt hierbei auf präventiven Maßnahmen 
-und Anpassungsstrategien, die notwendig sind, um auf die Herausforderungen durch 
-Quantencomputer zu reagieren. Die qualitativen Inhalte dieser Interviews werden analysiert, 
-um Risiken und Handlungsoptionen aus der Sicht von Fachleuten zu bewerten.
+\begin{table}[ht]
+    \centering
+    \begin{tabularx}{0.45 \textwidth}{X X X}
+    \hline
+    \textbf{Algorithmus} & \textbf{Schlüssellängen} & \textbf{Datenmengen} \\
+    \hline
+    \text{RSA} & 1024, 2048, 4096, 8129 \text{ Bit} & 117 \text{Byte}, 245 \text{Byte}, 373 \text{Byte}, 501 \text{Byte}, 1013 \text{Byte}\\
+    \hline
+    \text{AES} & 128, 192, 256 \text{ Bit} & 1 \text{ KB}, 10 \text{ KB}, 100 \text{ KB}, 1 \text{ MB}, 5 \text{ MB}\\
+    \hline
+    \end{tabularx}
+    \caption{Zu testende Schlüssellängen und Datenmengen}
+    \label{tab:schluessel_datenmengen}
+\end{table}
 
-\subsection{Erwartete Ergebnisse:}
+Die organisatorische Analyse (FF2) stützt sich auf qualitative Befragungen von IT-Sicherheitsverantwortlichen. 
+In leitfadengestützten Interviews werden Einschätzungen zu den Risiken durch Quantencomputer 
+sowie zur Dringlichkeit und Machbarkeit neuer kryptografischer Standards erhoben. Die Antworten werden thematisch 
+analysiert, um zentrale Herausforderungen und Handlungsstrategien zu identifizieren. Ein besonderer Fokus liegt dabei 
+auf präventiven Maßnahmen und ihrer zeitlichen Priorisierung. Beispielhafte Interviewfragen lauten:
 
-Die Studie erwartet, die Performance-Unterschiede zwischen klassischer und Quantenkryptografie 
-zu quantifizieren und kritische Schwellenwerte zu ermitteln, ab denen aktuelle Verschlüsselungen 
-gefährdet sind. Zudem soll ein Katalog präventiver Maßnahmen entwickelt werden, basierend auf den 
-Einschätzungen der Experten. Darüber hinaus wird eine zeitliche Dringlichkeit von Anpassungen 
-eingeschätzt und Organisationen konkrete Handlungsempfehlungen zur Vorbereitung auf die Ära des 
-Quantum Computing gegeben.
+\begin{itemize}
+    \item „Wie schätzen Sie die Gefahr ein, die Quantencomputer für aktuelle Verschlüsselungsverfahren darstellen?“
+    \item „Welche Maßnahmen halten Sie für besonders wichtig, um sich gegen diese Risiken abzusichern?“
+    \item „Wie dringend ist Ihrer Meinung nach die Einführung von Post-Quanten-Kryptografie?“
+    \item „Welche Herausforderungen sehen Sie bei der Umsetzung solcher Sicherheitsstandards?“
+    \item „Gibt es Branchen, die Ihrer Meinung nach besonders von der Entwicklung der Quantencomputer betroffen sein werden?“
+\end{itemize}
 
-Der Mixed-Methods-Ansatz erlaubt es, die Risiken nicht nur technisch zu quantifizieren, sondern 
-auch deren praktische Relevanz und organisatorische Bedeutung durch Expertenmeinungen einzuordnen. 
-So soll die Studie einen umfassenden Beitrag zur Vorbereitung auf die Herausforderungen der 
-Quantencomputing-Technologie leisten.
+Die Ergebnisse beider Analyseschritte werden integriert, um ein umfassendes Verständnis der Risiken und 
+Handlungsoptionen zu ermöglichen. Technische Erkenntnisse und Experteneinschätzungen werden kombiniert, um 
+praxisorientierte Empfehlungen für Unternehmen zur Vorbereitung auf die Ära des Quantencomputings abzuleiten.\\
+
+Das erwartete Ergebnis ist eine klare Einschätzung der Auswirkungen von Quantencomputern 
+auf klassische Verschlüsselungsverfahren und die Identifikation von Risiken sowie 
+Handlungsmöglichkeiten für Unternehmen. Durch das Benchmarking wird erwartet, dass RSA auf klassischen Computern nahezu 
+unbrechbar ist, jedoch auf Quantencomputern exponentiell schneller gebrochen werden kann. 
+Bei AES wird erwartet, dass der Algorithmus auf klassischen Computern 
+eine hohe Sicherheit bietet, während Grover's Algorithmus die Effizienz 
+der Entschlüsselung ungefähr halbiert, jedoch nicht exponentiell verringert.
+Die Ergebnisse sollen praxisnahe Empfehlungen 
+für den Übergang zu post-quanten-kryptografischen Standards liefern.
