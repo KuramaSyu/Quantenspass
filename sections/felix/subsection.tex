@@ -6,7 +6,7 @@ DFT operiert an einer diskreten Folge an komplexen Zahlen
 
 \(a = (a_0,\dots,a_{N-1}) \in \mathbb{C}^N\) (\(a_k \in \mathbb{C}\)) und gibt eine Folge\\
 \(\hat{a} = (\hat{a}_0,\dots,\hat{a}_{N-1}) \in \mathbb{C}^N\) (genannt \anf{diskret Fourier-Transformierte})
-wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \quad \text{für}\quad k = 0,\dots,N-1\] oder als Matrix-Vektor-Produkt: \cite{wiki-discrete-fourier-transformation}
+wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \quad \text{für}\quad k = 0,\dots,N-1\] oder als Matrix-Vektor-Produkt: \cite{noauthor_diskrete_2024}
 \[\hat{a} = W\cdot a \quad \text{mit} \quad W[k,j] = e^{-2\pi \imath \cdot\frac{jk}{N}}\]
 
 \subsubsection{\textbf{Interpretation der Fourier-Transformation:}}
@@ -25,7 +25,7 @@ wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \
 	Nach dieser Umstellung lässt sich folgender Algorithmus herleiten:
 	\begin{enumerate}
 		\item \textbf{Vergleichsfunktion definieren:}\\%Assymetrische Klammern in diesen Teil sind, weil sie Intervalle sind
-		Der Algorithmus funktioniert, indem man die gegebene Sequenz mit Sinus- und Cosinuskurven von verschiedenen Frequenzen vergleicht. Da der Cosinus den Real- und der Sinus den Imaginärteil stellt und diese sich nicht gegenseitig beeinflussen, wenn \(a \in \mathbb{R}^N\), kann man diese auch getrennt beachten.
+		Der Algorithmus funktioniert, indem man die gegebene Sequenz mit Sinus- und Cosinuskurven von verschiedenen Frequenzen vergleicht. \cite{reducible_discrete_2023} Da der Cosinus den Real- und der Sinus den Imaginärteil stellt und diese sich nicht gegenseitig beeinflussen, wenn \(a \in \mathbb{R}^N\), kann man diese auch getrennt beachten.
 		\[f_k(x) = \cos\left(\frac{2\pi k}{N}\cdot x\right) + \imath \cdot\sin\left(\frac{2\pi k}{N}\cdot x\right) \]
 		Die Winkelfunktionen sollen im Intervall \([0,N)\), also im Intervall der Eingangssequenz, \(k\) ganze Perioden durchlaufen. Der Cosinus (Sinus ist analog) durchläuft eine Periode im Intervall \([0,2\pi)\). Wenn man das Argument \(x\) mit \(2\pi\), multipliziert wird das Periodenintervall zu \([0,1)\). Durch Division mit \(N\) wird das Intervall zum verlangten \([0,N)\). Um \(k\) Perioden im Intervall zu erhalten, Multipliziert man mit \(k\), sodass das Intervall \(\left[0,\frac{N}{k}\right) ~k\)-mal in \([0,N)\) passt.
 		\item \textbf{Vergleichssequenzen erstellen:}\\
@@ -59,14 +59,13 @@ wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \
 	%#O(n²)
 	%for n in ao:
 	%	print(np.round(n,5))
-\end{itemize}\cite{yt_reducible}
+\end{itemize}
 \subsubsection{\textbf{Quanten-Fourier-Transformation: QFT}}\label{sec:QFT}~\newline
 QFT ist die Anwendung von \hyperref[sec:DFT]{DFT} in auf Quantencomputern. Sie hat \(n\) Qubits als Eingang, womit die Eingangssequenz aus \(N = 2^n\) Basiszuständen besteht: \(\left(|0\rangle,|1\rangle,\dots,|N-1\rangle\right)\). Der Quantenschaltkreis ist in Abbildung~\ref{fig:QFT_n_Qubits} zu sehen.
 \begin{figure}[hb]
 	\centering
 	\includegraphics[width=0.45\textwidth]{sections/felix/Q_fourier_nqubits.png}
-	\caption{QFT für n Qubits (ohne Umkehrung der Reihenfolge der Zustände der Ausgaben)\cite{wiki-q-fourier-nqubitspng}}
-	
+	\caption{QFT für n Qubits (ohne Umkehrung der Reihenfolge der Zustände der Ausgaben) \cite{noauthor_q_fourier_nqubitspng_2018}}
 	\label{fig:QFT_n_Qubits}
 \end{figure}
 \\Wobei \(\left[0.x_1 x_2 \dots x_n\right]\) Notation für \(\frac{x_1}{2}+\frac{x_2}{4}+\cdots+\frac{x_n}{2^n}\) ist.
@@ -77,11 +76,11 @@ Verwendet werden das Hadamard-Gatter \(H = \frac{1}{\sqrt{2}}\begin{pmatrix}
 	1 & 0\\
 	0 & e^{\frac{2\pi\imath}{2^m}}\\
 \end{pmatrix}\).
-Eine Schaltung für \(3\) Qubits und somit \(2^3 = 8 = N\) ist in Abbildung~\ref{fig:QFT_3_Qubits} zu sehen.\cite{wiki-list-quantum-gates}
+Eine Schaltung für \(3\) Qubits und somit \(2^3 = 8 = N\) ist in Abbildung~\ref{fig:QFT_3_Qubits} zu sehen. \cite{noauthor_list_2024}\\
 \begin{figure}[hb]
 	\centering
 	\includegraphics[width=0.45\textwidth]{sections/felix/Q_fourier_3qubits.png}
-	\caption{QFT für 3 Qubits (ohne Umkehrung der Reihenfolge der Zustände der Ausgaben)\cite{wiki-q-fourier-3qubitspng}}
+	\caption{QFT für 3 Qubits (ohne Umkehrung der Reihenfolge der Zustände der Ausgaben) \cite{noauthor_q_fourier_3qubitspng_2018}}
 	\label{fig:QFT_3_Qubits}
 \end{figure}
 \\Diese Schaltung lässt sich mithilfe der Identitätsmatrix \(I = \begin{pmatrix}
@@ -100,7 +99,7 @@ Eine Schaltung für \(3\) Qubits und somit \(2^3 = 8 = N\) ist in Abbildung~\ref
 \[\text{oder auch als}\quad QFT_8 |x\rangle = \frac{1}{\sqrt{8}}\sum_{j=0}^{8-1} e^{\frac{2\pi \imath x j}{8}}|j\rangle\]
 darstellen, sodass für ein allgemeines \(N = 2^n\) gilt:
 \[QFT_N |x\rangle = \frac{1}{\sqrt{N}}\sum_{j=0}^{N-1} e^{\frac{2\pi \imath x j}{N}}|j\rangle\]
-\cite{wiki-quanten-fouriertransformation}
+\cite{noauthor_quanten-fouriertransformation_2024}
 Dies unterscheidet sich von der Formel für die \hyperref[sec:DFT]{DFT} nur
 \begin{enumerate}
 	\item in der Anwendung (auf Quantenzustände statt auf Vektoren/Sequenzen)
