@@ -49,12 +49,16 @@ $N_1 = 132$ und $N_2 = 28$ wird der Algorithmus wie folgt angewendet:
     \]
 \end{enumerate}
 
-\section{Funktionsweise vom RSA Algorithmus}
+\subsection{RSA Algorithmus}
+\subsubsection{Grundlegende Funktionsweise von RSA}
 RSA ist ein asymmetrischer Verschlüsselungsalgorithmus.
 RSA wird benötigt, um eine gesicherte Kommunikation zwischen mindestens zwei Parteien aufzubauen, da 
 es andernfalls keine Möglichkeit gäbe, den Schlüssel für die symmetrische Verschlüsselung \anf{abhörsicher} zu übertragen.
 Die Sicherheit beruht darauf, dass Faktorisierung von Primzahlen, da dieses ein \anf{NP\textendash Hard} Problem ist\cite{moolchad_leveraging_nodate},
-also nicht in polynomieller Zeit gelöst werden kann. Die zwei Primfaktoren, welche für RSA benötigt werden, 
+also nicht in polynomieller Zeit gelöst werden kann. 
+
+\subsubsection{Verschlüsselung mit RSA}
+Die zwei Primfaktoren, welche für RSA benötigt werden, 
 werden folgend mit $p$ und $q$ bezeichnet, wobei $p$ und $q$ relativ Prim zueinander sind. 
 $n$ ist das Produkt dieser beiden Primfaktoren, welches bei derzeitigen RSA\textendash\ Implementierungen 
 2048 Bit lang ist. Im folgenden Beispiel wird zur Nachvollziehbarkeit für $p$ und $q$ jeweils 13 und 17 gewählt, womit
@@ -72,18 +76,6 @@ d \cdot e \equiv 1 \pmod{\phi(n)}
 In diesem Fall ist $d = 167$, da $167 \cdot 23 = 3841 \equiv 1 \pmod{192}$. Der Private Key ist damit $(d, n) = (167, 221)$.
 Damit das Wort \anf{Dresden} tatsächlich verschlüsselt werden kann, wird dieses zu ASCII umgewandelt, wie in 
 Tabelle \ref{tab:encryption_dresden} in den ersten beiden Spalten dargestellt.
-% \begin{table}[h]
-%     \centering
-%     \begin{tabular}{|c|c|c|c|c|c|c|c|}
-%         \hline
-%         Buchstabe & D & r & e & s & d & e & n \\
-%         \hline
-%         ASCII & 68 & 114 & 101 & 115 & 100 & 101 & 110 \\
-%         \hline
-%     \end{tabular}
-%     \caption{ASCII-Werte der Buchstaben von \anf{Dresden}}
-%     \label{tab:ascii_dresden}
-% \end{table}
 Die Verschlüsselung erfolgt für jedes Zeichen einzeln durch:
 \[
 c = m^e \bmod n
@@ -110,6 +102,7 @@ Für das Wort \anf{Dresden} ergibt sich die Verschlüsselung zu $[204, 160, 186,
     \label{tab:encryption_dresden}
 \end{table}
 
+\subsubsection{Entschlüsselung mit RSA}
 Die Entschlüsselung erfolgt mit dem Private Key ($d, n$) analog durch:
 \[
 m = c^d \bmod n
