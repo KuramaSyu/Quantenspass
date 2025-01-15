@@ -12,7 +12,7 @@ asymmetrischer Verschlüsselung, ist folgend der HTTPS\textendash Verbindungsauf
     \caption{Demonstration des HTTPS Verbindungsaufbaus}
     \label{fig:http_verbindungsaufbau}
 \end{figure}
-Wie in Abbildung \ref{fig:http_verbindungsaufbau} dargestellt, erfolgt der Verbindungsaufbau, indem:
+Wie in Abbildung~\ref{fig:http_verbindungsaufbau} dargestellt, erfolgt der Verbindungsaufbau, indem:
 \begin{enumerate}
     \item Der Client unterstützte Verschlüsselungsalgorithmen an den Server sendet.
     \item Der Server das Sicherste der unterstützten Algorithmen auswählt und das Zertifikat, welches den Public Key enthält, an den Client sendet.
@@ -27,19 +27,19 @@ Teiler (ggT) zweier Zahlen effizient zu bestimmen. Anhand des Beispiels
 $N_1 = 132$ und $N_2 = 28$ wird der Algorithmus wie folgt angewendet:
 
 \begin{enumerate}
-    \item \textbf{Schritt 1:}  
+    \item Schritt 1:
     Teile die größere Zahl durch die kleinere und bestimme den Rest:  
     \[
     132 \div 28 = 4 \, \text{Rest} \, 20 \quad \Rightarrow \quad 132 = 4 \cdot 28 + 20.
     \]
 
-    \item \textbf{Schritt 2:}  
+    \item Schritt 2:
     Die vorherige Divisorzahl $28$ wird der neue Dividend, und der Rest $20$ wird der neue Divisor:  
     \[
     28 \div 20 = 1 \, \text{Rest} \, 8 \quad \Rightarrow \quad 28 = 1 \cdot 20 + 8.
     \]
 
-    \item \textbf{Schritt 3:}  
+    \item Schritt 3:
     Wiederhole den Vorgang, bis der Rest $0$ wird:  
     \[
     20 \div 8 = 2 \, \text{Rest} \, 4 \quad \Rightarrow \quad 20 = 2 \cdot 8 + 4,

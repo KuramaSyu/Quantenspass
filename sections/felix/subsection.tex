@@ -1,17 +1,17 @@
 \subsection{Fourier-Transformation: Zerlegung von Signalen in Frequenzen}
-Die Fourier-Transformation ist ein Algorithmus, mit einer Komplexität von \(O\left(n^2\right) \), der häufig genutzt wird, um ein Signal in ein Spektrum von Frequenzen zu zerlegen, also in eine kontinuierliche Menge an Gewichten, sodass die kontinuierliche, gewichtete Summe aus Sinus und Kosinus Funktionen unterschiedlicher Frequenzen ist. Die am häufigsten genutzte Variante ist die diskrete Fourier-Transformation, die nicht kontinuierlich ist und somit nur endliche Frequenzen erkennt. \cite{don_h_johnson_58_2017}
+Die Fourier-Transformation ist ein Algorithmus, mit einer Komplexität von \(O\left(n^2\right) \), der häufig genutzt wird, um ein Signal in ein Spektrum von Frequenzen zu zerlegen, also in eine kontinuierliche Menge an Gewichten, sodass die kontinuierliche, gewichtete Summe aus Sinus und Kosinus Funktionen unterschiedlicher Frequenzen ist. Die am häufigsten genutzte Variante ist die diskrete Fourier-Transformation, die nicht kontinuierlich ist und somit nur endliche Frequenzen erkennt \cite{don_h_johnson_58_2017}.
 
 \subsubsection{Diskrete Fourier-Transformation: DFT}\label{sec:DFT}
 DFT operiert an einer diskreten Folge an komplexen Zahlen
 
 \(a = (a_0,\dots,a_{N-1}) \in \mathbb{C}^N\) (\(a_k \in \mathbb{C}\)) und gibt eine Folge\\
 \(\hat{a} = (\hat{a}_0,\dots,\hat{a}_{N-1}) \in \mathbb{C}^N\) (genannt \anf{diskret Fourier-Transformierte})
-wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \quad \text{für}\quad k = 0,\dots,N-1\] oder als Matrix-Vektor-Produkt: \cite{noauthor_diskrete_2024}
+wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \quad \text{für}\quad k = 0,\dots,N-1\] oder als Matrix-Vektor-Produkt \cite{noauthor_diskrete_2024}:
 \[\hat{a} = W\cdot a \quad \text{mit} \quad W[k,j] = e^{-2\pi \imath \cdot\frac{jk}{N}}\]
 
 \subsubsection{Interpretation der Fourier-Transformation:}
 \begin{itemize}
-	\item \textbf{Bedeutung des Ergebnisses:}\\
+	\item Bedeutung des Ergebnisses:\\
 	Mit den diskret Fourier-Transformierten lässt sich eine Funktion konstruieren, die an den stellen \(n = 0,\dots,N-1\) die originalen Funktionswerte liefert.
 	\[f[n] = \sum_{k=0}^{N-1}\left(\text{Re}(\hat{a}^\prime_k)\cos\left(\frac{2\pi kn}{N}\right)+\text{Im}(\hat{a}^\prime_k)\sin\left(\frac{2\pi kn}{N}\right)\right)\]
 	wobei \(\hat{a}\) zur Vereinfachung und besseren Relation normiert wird mit \(\hat{a}^\prime = \frac{\hat{a}}{N}\).
@@ -19,22 +19,22 @@ wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \
 	Eine alternative Interpretation der Werte der diskret Fourier-Transformierten ist, das \(\left\lvert \hat{a}^\prime_k\right\rvert \) der Amplitude und die Phase \(\quad\arg(\hat{a}^\prime_k) = \arctan\left(\frac{\text{Im}(\hat{a}^\prime_k)}{\text{Re}(\hat{a}^\prime_k)}\right)\quad \) entspricht.
 	\[f[n] = \sum_{k=0}^{N-1}\left\lvert\hat{a}^\prime_k\right\rvert\cdot\cos\left(\frac{2\pi kn}{N}+\arg(\hat{a}^\prime_k)\right)\]
 	Dies ist eine Zerlegung der Eingangssequenz in Frequenzen.
-	\item \textbf{Alternative Berechnung der diskreten Fourier Transformation:}\\
+	\item Alternative Berechnung der diskreten Fourier Transformation:\\
 	Eine menschenfreundlichere Methode kann man erhalten, wenn man erhalten, indem man die Eulersche Formel anwendet:
 	\[e^{-2\pi \imath \cdot\frac{jk}{N}} = \cos\left(\frac{2\pi jk}{N}\right) + \imath\cdot\sin\left(\frac{2\pi jk}{N}\right)\]
 	Nach dieser Umstellung lässt sich folgender Algorithmus herleiten:
 	\begin{enumerate}
-		\item \textbf{Vergleichsfunktion definieren:}\\%Assymetrische Klammern in diesen Teil sind, weil sie Intervalle sind
-		Der Algorithmus funktioniert, indem man die gegebene Sequenz mit Sinus- und Cosinuskurven von verschiedenen Frequenzen vergleicht. \cite{reducible_discrete_2023} Da der Cosinus den Real- und der Sinus den Imaginärteil stellt und diese sich nicht gegenseitig beeinflussen, wenn \(a \in \mathbb{R}^N\), kann man diese auch getrennt beachten.
+		\item Vergleichsfunktion definieren:\\%Assymetrische Klammern in diesen Teil sind, weil sie Intervalle sind
+		Der Algorithmus funktioniert, indem man die gegebene Sequenz mit Sinus- und Cosinuskurven von verschiedenen Frequenzen vergleicht \cite{reducible_discrete_2023}. Da der Cosinus den Real- und der Sinus den Imaginärteil stellt und diese sich nicht gegenseitig beeinflussen, wenn \(a \in \mathbb{R}^N\), kann man diese auch getrennt beachten.
 		\[f_k(x) = \cos\left(\frac{2\pi k}{N}\cdot x\right) + \imath \cdot\sin\left(\frac{2\pi k}{N}\cdot x\right) \]
 		Die Winkelfunktionen sollen im Intervall \([0,N)\), also im Intervall der Eingangssequenz, \(k\) ganze Perioden durchlaufen. Der Cosinus (Sinus ist analog) durchläuft eine Periode im Intervall \([0,2\pi)\). Wenn man das Argument \(x\) mit \(2\pi\), multipliziert wird das Periodenintervall zu \([0,1)\). Durch Division mit \(N\) wird das Intervall zum verlangten \([0,N)\). Um \(k\) Perioden im Intervall zu erhalten, Multipliziert man mit \(k\), sodass das Intervall \(\left[0,\frac{N}{k}\right) ~k\)-mal in \([0,N)\) passt.
-		\item \textbf{Vergleichssequenzen erstellen:}\\
+		\item Vergleichssequenzen erstellen:\\
 		Mit der Funktion können wir die \(k\)-te Vergleichssequenz erhalten, indem wir \(f\) an denselben Stellen wie \(a\) abtasten.
 		\[b_k = \left(f_k(0),f_k(1),\dots,f_k(N-1)\right) \]
-		\item \textbf{Vergleichen:}\\
+		\item Vergleichen:\\
 		Um zu erfahren, welchen Teil die \(k\)-te Frequenz in der Eingangssequenz spielt, nimmt man die Summe der Produkte von jedem Element \(a_j\) der Eingangssequenz mit den korrespondierenden \({(b_k)}_j\), d.h. das Skalarprodukt
 		\[\hat{a}_k = a \cdot b_k\]
-		\item \textbf{Spezialfall \(k = 0\):}\\
+		\item Spezialfall \(k = 0\):\\
 		Schon in der Ausgangsformel kann man sehen, das	für \(k = 0\) gilt: \[e^{-2\pi \imath \cdot\frac{j\cdot 0}{N}} = e^0 = 1\]
 		weshalb sich \(\hat{a}_0\) zu
 		\[\hat{a}_0 = \sum_{j=0}^{N-1} a_j\] zusammenfassen lässt. Womit \(\hat{a}^\prime_0 \) dem arithmetischen Mittel von \(a\) entspricht.
@@ -76,7 +76,7 @@ Verwendet werden das Hadamard-Gatter \(H = \frac{1}{\sqrt{2}}\begin{pmatrix}
 	1 & 0\\
 	0 & e^{\frac{2\pi\imath}{2^m}}\\
 \end{pmatrix}\).
-Eine Schaltung für \(3\) Qubits und somit \(2^3 = 8 = N\) ist in Abbildung~\ref{fig:QFT_3_Qubits} zu sehen. \cite{noauthor_list_2024}\\
+Eine Schaltung für \(3\) Qubits und somit \(2^3 = 8 = N\) ist in Abbildung~\ref{fig:QFT_3_Qubits} zu sehen \cite{noauthor_list_2024}.\\
 \begin{figure}[hb]
 	\centering
 	\includegraphics[width=0.45\textwidth]{sections/felix/Q_fourier_3qubits.png}
@@ -97,9 +97,8 @@ Eine Schaltung für \(3\) Qubits und somit \(2^3 = 8 = N\) ist in Abbildung~\ref
 \end{multline}
 \[QFT_8 |x\rangle = W \cdot \left(|x_1\rangle \oplus |x_2\rangle \oplus |x_3\rangle\right)\]
 \[\text{oder auch als}\quad QFT_8 |x\rangle = \frac{1}{\sqrt{8}}\sum_{j=0}^{8-1} e^{\frac{2\pi \imath x j}{8}}|j\rangle\]
-darstellen, sodass für ein allgemeines \(N = 2^n\) gilt:
+darstellen, sodass für ein allgemeines \(N = 2^n\) gilt \cite{noauthor_quanten-fouriertransformation_2024}:
 \[QFT_N |x\rangle = \frac{1}{\sqrt{N}}\sum_{j=0}^{N-1} e^{\frac{2\pi \imath x j}{N}}|j\rangle\]
-\cite{noauthor_quanten-fouriertransformation_2024}
 Dies unterscheidet sich von der Formel für die \hyperref[sec:DFT]{DFT} nur
 \begin{enumerate}
 	\item in der Anwendung (auf Quantenzustände statt auf Vektoren/Sequenzen)

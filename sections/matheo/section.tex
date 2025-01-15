@@ -4,7 +4,7 @@
 
 Advanced Encryption Standard (AES) ist ein symmetrischer Blockchiffre Algorithmus zur 
 Verschlüsselung sensibler Daten wie VPN Verbindungen, HTTPS Anfragen 
-(siehe Abbildung \ref{fig:http_verbindungsaufbau}) und WLAN (WPA2). 
+(siehe Abbildung~\ref{fig:http_verbindungsaufbau}) und WLAN (WPA2). 
 Entwickelt wurde er 2001 vom NIST. AES arbeitet mit Schlüssellängen von 128, 192 oder 256 Bit, 
 wobei längere Schlüssel sicherer sind. Die Blockgröße beträgt stets 128 Bit, da AES eine Blockchiffre 
 ist. Die Anzahl der Runden hängt von der Schlüssellänge ab: 
@@ -30,8 +30,8 @@ c_3  & c_7  & c_{11} & c_{15}
 \end{bmatrix}
 \]
 
-Wie in Abbildung \ref{fig:qualen_AES} dargestellt, umfasst jede Runde die Schritte \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} und \textit{Add Round Key}. 
-In der letzten Runde wird \textit{MixColumns} über\-sprungen.\cite{AES_Algorithmus_2}\cite{AES_Algorithmus_3}\cite{AES_Algorithmus}\cite{Blockchiffre}
+Wie in Abbildung~\ref{fig:qualen_AES} dargestellt, umfasst jede Runde die Schritte \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} und \textit{Add Round Key}. 
+In der letzten Runde wird \textit{MixColumns} über\-sprungen \cite{AES_Algorithmus_2} \cite{AES_Algorithmus_3} \cite{AES_Algorithmus} \cite{Blockchiffre}.
 
 \begin{figure}[H]
 	\centering
@@ -51,7 +51,7 @@ Dabei ist \(x^8 + x^4 + x^3 + x + 1\) das standardmäßige irreduzible Polynom. 
 \[
 s_i = A \cdot b_i + c
 \]
-wobei \(A\) eine $8 \times 8$-Matrix ist und \(c\) eine Konstante.\cite{Endliche_körper}\cite{S_Box}
+wobei \(A\) eine $8 \times 8$-Matrix ist und \(c\) eine Konstante \cite{Endliche_körper} \cite{S_Box}.
 
 \subsubsection{round key}
 
@@ -78,26 +78,19 @@ Der erste Rundenschlüssel ergibt sich schließlich durch Kombination der Wörte
 \textit{SubBytes} ersetzt jedes Byte des Datenblocks durch den entsprechenden Wert aus der S-Box, wobei die Bytewerte als Adressen dienen. Zum Beispiel:
 \begin{table}[H]
     \resizebox{0.3\textwidth}{!}{
-    \begin{tabular}{|c||c c|c|c|c|c|c|c|c c|}
+    \begin{tabular}{|c|cccccccccc|}
     \hline
        & \dots & X4 & X5 & X6 & X7 & X8 & X9 & XA & XB & \dots \\
     \hline
-    \hline
-    0X &   & 63 & 7C & 77 & 7B & F2 & 6B & 6F & C5 &  \\
-    \hline
-    1X &   & 30 & 01 & 67 & 2B & FE & D7 & AB & 76 &  \\
-    \hline
-    2X &   & CA & 82 & C9 & 7D & FA & 59 & 47 & F0 &  \\
-    \hline
-    3X &   & AD & D4 & A2 & AF & 9C & A8 & 51 & A3 &  \\
-    \hline
-    4X &   & 40 & 8F & 92 & 9D & 38 & F5 & BC & B6 &  \\
-    \hline
-    5X &   & DA & 21 & 10 & FF & F3 & D2 & CD & 0C &  \\
-    \hline
-    6X &   & 13 & EC & 5F & 97 & 44 & 17 & C4 & A5 &  \\
-    \hline
-    7X &   & 33 & 85 & 45 & F9 & 02 & 7F & 50 & 3C &  \\
+    0X & \dots & 63 & 7C & 77 & 7B & F2 & 6B & 6F & C5 & \dots \\
+    1X & \dots & 30 & 01 & 67 & 2B & FE & D7 & AB & 76 & \dots \\
+    2X & \dots & CA & 82 & C9 & 7D & FA & 59 & 47 & F0 & \dots \\
+    3X & \dots & AD & D4 & A2 & AF & 9C & A8 & 51 & A3 & \dots \\
+    4X & \dots & 40 & 8F & 92 & 9D & 38 & F5 & BC & B6 & \dots \\
+    5X & \dots & DA & 21 & 10 & FF & F3 & D2 & CD & 0C & \dots \\
+    6X & \dots & 13 & EC & 5F & 97 & 44 & 17 & C4 & A5 & \dots \\
+    7X & \dots & 33 & 85 & 45 & F9 & 02 & 7F & 50 & 3C & \dots \\
+    \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots \\
     \hline
     \end{tabular}
     }
