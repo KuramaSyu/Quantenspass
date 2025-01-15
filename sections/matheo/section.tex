@@ -1,4 +1,4 @@
-\section{Funktionsweise vom AES Algorithmus}
+\subsection{Funktionsweise vom AES Algorithmus}
 \label{sec:aes}
 \setlength{\parindent}{0pt}
 
@@ -42,7 +42,7 @@ In der letzten Runde wird \textit{MixColumns} über\-sprungen.\cite{AES_Algorith
 
 
 
-\subsection{S-Box}
+\subsubsection{S-Box}
 Die S-Box (Substitution-Box) dient zur nichtlinearen Byte-Substitution, um die Beziehung zwischen Schlüssel und Chiffretext zu verschleiern. Jedes Eingangsbyte \(b\) (außer 0) wird im Galois-Feld \(GF(2^8)\) inversiert:
 \[
 b' = b^{-1} \mod (x^8 + x^4 + x^3 + x + 1)
@@ -53,7 +53,7 @@ s_i = A \cdot b_i + c
 \]
 wobei \(A\) eine $8 \times 8$-Matrix ist und \(c\) eine Konstante.\cite{Endliche_körper}\cite{S_Box}
 
-\subsection{round key}
+\subsubsection{round key}
 
 Der 128-Bit-Schlüssel wird in vier 32-Bit-Wörter $w[0], w[1], w[2], w[3]$ unterteilt. 
 Der Wert $g(w[3])$ wird durch eine zyklische Linksverschiebung von $w[3]$ berechnet, 
@@ -74,7 +74,7 @@ Der erste Rundenschlüssel ergibt sich schließlich durch Kombination der Wörte
 \text{Rundenschlüssel}_1 = w[4], w[5], w[6], w[7]
 \]
 
-\subsection{SubBytes}
+\subsubsection{SubBytes}
 \textit{SubBytes} ersetzt jedes Byte des Datenblocks durch den entsprechenden Wert aus der S-Box, wobei die Bytewerte als Adressen dienen. Beispiel einer S-Box:
 \begin{table}[H]
     \resizebox{0.3\textwidth}{!}{
@@ -103,7 +103,7 @@ Der erste Rundenschlüssel ergibt sich schließlich durch Kombination der Wörte
 
 
 
-\subsection{ShiftRows}
+\subsubsection{ShiftRows}
 \textit{ShiftRows} verschiebt die Reihen der 4 x 4-Matrix zyklisch: Die $n$-te Reihe wird um $(n-1)$ Stellen nach links verschoben.
 \[
 \begin{array}{c}
@@ -124,17 +124,17 @@ c_{15} & c_{12} & c_{13} & c_{14}
 \end{array}
 \]
 
-\subsection{MixColumns}
+\subsubsection{MixColumns}
 MixColumns sorgt für eine Mischung der Spalten, indem jede Spalte der Matrix als Polynom im Galois-Feld 
 \(GF(2^8)\) betrachtet wird. Jede Spalte wird mit einem festen Polynom \(a(x) = 03x^3 + 01x^2 + 01x + 02\) 
 multipliziert, wobei die Multiplikation modulo \(x^4 + 1\) erfolgt. Dieser Schritt verteilt die Bits der Eingabe, 
 um eine stärkere Diffusion zu gewährleisten.
 
-\subsection{Add Round Key}
+\subsubsection{Add Round Key}
 In Add Round Key wird jede Byte-Position des Blocks mit dem entsprechenden Byte des Rundenschlüssels 
 XOR-verknüpft. Dieser Schritt sorgt dafür, dass der Hauptschlüssel in jede Runde einfließt.
 
-\subsection{Sicherheit gegenüber Quantenangriffen}
+\subsubsection{Sicherheit gegenüber Quantenangriffen}
 Ein wesentlicher Vorteil von AES im Vergleich zu anderen Algorithmen, wie etwa RSA, ist seine Sicherheit 
 gegen theoretische Angriffe von Quantencomputern. Quantenalgorithmen wie Shor's Algorithmus sind in der Lage, 
 die Primfaktorzerlegung und das Diskrete Logarithmusproblem effizient zu lösen, was RSA und ähnliche Verfahren anfällig 

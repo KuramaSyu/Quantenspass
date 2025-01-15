@@ -1,7 +1,7 @@
 \subsection{Fourier-Transformation: Zerlegung von Signalen in Frequenzen}
 Die Fourier-Transformation ist ein Algorithmus, mit einer Komplexität von \(O\left(n^2\right) \), der häufig genutzt wird, um ein Signal in ein Spektrum von Frequenzen zu zerlegen, also in eine kontinuierliche Menge an Gewichten, sodass die kontinuierliche, gewichtete Summe aus Sinus und Kosinus Funktionen unterschiedlicher Frequenzen ist. Die am häufigsten genutzte Variante ist die diskrete Fourier-Transformation, die nicht kontinuierlich ist und somit nur endliche Frequenzen erkennt. \cite{don_h_johnson_58_2017}
 
-\subsubsection{\textbf{Diskrete Fourier-Transformation: DFT}}\label{sec:DFT}~\newline
+\subsubsection{Diskrete Fourier-Transformation: DFT}\label{sec:DFT}
 DFT operiert an einer diskreten Folge an komplexen Zahlen
 
 \(a = (a_0,\dots,a_{N-1}) \in \mathbb{C}^N\) (\(a_k \in \mathbb{C}\)) und gibt eine Folge\\
@@ -9,7 +9,7 @@ DFT operiert an einer diskreten Folge an komplexen Zahlen
 wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \quad \text{für}\quad k = 0,\dots,N-1\] oder als Matrix-Vektor-Produkt: \cite{noauthor_diskrete_2024}
 \[\hat{a} = W\cdot a \quad \text{mit} \quad W[k,j] = e^{-2\pi \imath \cdot\frac{jk}{N}}\]
 
-\subsubsection{\textbf{Interpretation der Fourier-Transformation:}}
+\subsubsection{Interpretation der Fourier-Transformation:}
 \begin{itemize}
 	\item \textbf{Bedeutung des Ergebnisses:}\\
 	Mit den diskret Fourier-Transformierten lässt sich eine Funktion konstruieren, die an den stellen \(n = 0,\dots,N-1\) die originalen Funktionswerte liefert.
@@ -60,7 +60,7 @@ wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \
 	%for n in ao:
 	%	print(np.round(n,5))
 \end{itemize}
-\subsubsection{\textbf{Quanten-Fourier-Transformation: QFT}}\label{sec:QFT}~\newline
+\subsubsection{Quanten-Fourier-Transformation: QFT}\label{sec:QFT}
 QFT ist die Anwendung von \hyperref[sec:DFT]{DFT} in auf Quantencomputern. Sie hat \(n\) Qubits als Eingang, womit die Eingangssequenz aus \(N = 2^n\) Basiszuständen besteht: \(\left(|0\rangle,|1\rangle,\dots,|N-1\rangle\right)\). Der Quantenschaltkreis ist in Abbildung~\ref{fig:QFT_n_Qubits} zu sehen.
 \begin{figure}[hb]
 	\centering
