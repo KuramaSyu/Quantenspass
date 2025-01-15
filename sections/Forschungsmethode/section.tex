@@ -12,7 +12,7 @@ Im Rahmen der technischen Analyse (FF1) werden zwei klassische Verschlüsselungs
 konventionellen Systemen hinsichtlich ihrer Verschlüsselungs- und Entschlüsselungszeiten analysiert. Diese 
 Tests berücksichtigen unterschiedliche Schlüssellängen und Datenmengen, um die Effizienz der Algorithmen unter 
 variierenden Bedingungen zu bewerten, welche in Tabelle \ref{tab:schluessel_datenmengen} dargestellt sind. 
-\begin{table}[ht]
+\begin{table}[H]
     \centering
     \begin{tabularx}{0.45 \textwidth}{X X X}
     \hline
@@ -26,8 +26,8 @@ variierenden Bedingungen zu bewerten, welche in Tabelle \ref{tab:schluessel_date
     \caption{Zu testende Schlüssellängen und Datenmengen}
     \label{tab:schluessel_datenmengen}
 \end{table}
-Die sehr spezifischen Datenmengen bei RSA beziehen sich auf die maximale Datenmenge pro Schlüssellaenge. 
-Am Beispiel von 4096 Bit Verschlüsselung, würde diese zu Bytes umgerechnet werden. Diesen 
+Die sehr spezifischen Datenmengen bei RSA beziehen sich auf die maximale Datenmenge pro Schlüssellänge. 
+Am Beispiel von 4096 Bit Verschlüsselung, würde diese 4096 Bit zu Bytes umgerechnet werden. Diesen Bytes 
 werden folgend 11 Bytes (konstant bei allen Schlüssellängen) abgezogen, da diese als sogenanntes Padding dienen. Damit ergibt sich $4096/8 - 11 = 501$. 
 Bei AES beziehen sich die Datenmengen auf gängige zu Größen, welche bei HTTPS übertragen werden, da hierbei AES mit RSA kombiniert wird 
 (Abbildung \ref{fig:http_verbindungsaufbau}).
