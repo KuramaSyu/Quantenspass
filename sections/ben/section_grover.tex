@@ -8,8 +8,8 @@ für die Sicherheit symmetrischer Verschlüsselungsverfahren wie AES.
 \subsection{Grundprinzip}
 Der Algorithmus arbeitet mit zwei Hauptschritten, die wiederholt angewendet werden:
 \begin{itemize}
-    \item \textbf{Phasen-Inversion}: Markiert die gesuchte Lösung durch Vorzeichenwechsel.
-    \item \textbf{Spieglung am Mittelwert}: Verstärkt die Wahrscheinlichkeit, die gesuchte Lösung zu finden.
+    \item Phasen-Inversion: Markiert die gesuchte Lösung durch Vorzeichenwechsel.
+    \item Spieglung am Mittelwert: Verstärkt die Wahrscheinlichkeit, die gesuchte Lösung zu finden.
 \end{itemize}
 
 \subsection{Warum sind mehrere Iterationen nötig?}
@@ -25,12 +25,12 @@ mit nahezu 100\% Sicherheit gefunden wird.
 
 \subsection{Funktionsweise}
 \begin{enumerate}
-    \item \textbf{Initialisierung:} Der Algorithmus beginnt mit einer Überlagerung aller möglichen Zustände:
+    \item Initialisierung: Der Algorithmus beginnt mit einer Überlagerung aller möglichen Zustände:
         \[
         |\psi\rangle = \frac{1}{\sqrt{N}} \sum_{x=0}^{N-1} |x\rangle.
         \]
 
-    \item \textbf{Phasen-Inversion:} Die gesuchte Lösung $x_{\text{target}}$ wird markiert, indem ihre Phase umkehrt wird:
+    \item Phasen-Inversion: Die gesuchte Lösung $x_{\text{target}}$ wird markiert, indem ihre Phase umkehrt wird:
         \[
         O |x\rangle = \begin{cases} 
             -|x\rangle & \text{wenn } x = x_{\text{target}}, \\
@@ -38,12 +38,12 @@ mit nahezu 100\% Sicherheit gefunden wird.
         \end{cases}
         \]
 
-    \item \textbf{Spieglung am Mittelwert:} Diese Operation verstärkt die Wahrscheinlichkeit der markierten Lösung:
+    \item Spieglung am Mittelwert: Diese Operation verstärkt die Wahrscheinlichkeit der markierten Lösung:
         \[
         D |\psi\rangle = 2|\psi\rangle\langle\psi| - I.
         \]
 
-    \item \textbf{Wiederholung:} Phasen-Inversion und Spieglung werden mehrfach angewendet (etwa $\sqrt{N}$-mal), um die 
+    \item Wiederholung: Phasen-Inversion und Spieglung werden mehrfach angewendet (etwa $\sqrt{N}$-mal), um die 
     Wahrscheinlichkeit, die richtige Lösung zu messen, zu maximieren.
 \end{enumerate}
 
