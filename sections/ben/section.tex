@@ -7,16 +7,16 @@ Problem bildet die Grundlage vieler kryptografischer Verfahren wie RSA,
 da es für klassische Computer äußerst schwierig ist, große Zahlen in 
 ihre Primfaktoren zu zerlegen. Shor’s Algorithmus hingegen nutzt die 
 Eigenschaften von Quantencomputern, um diese Aufgabe exponentiell 
-schneller zu lösen. \cite{shor}
+schneller zu lösen \cite{shor}.
 
 \subsection{Ablauf des Algorithmus}
 
 \begin{enumerate}
-    \item \textbf{Auswahl einer Basis $a$:}  
+    \item Auswahl einer Basis $a$:
     Zunächst wird eine Zahl $a$ gewählt, wobei $1 < a < N$ gilt. Diese 
     Basis dient als Ausgangspunkt für die nachfolgenden Berechnungen.
 
-    \item \textbf{Periodenfindung:}  
+    \item Periodenfindung: 
     Der Algorithmus sucht die kleinste positive Periode $r$, sodass die 
     Kongruenzgleichung  
     \[
@@ -33,7 +33,7 @@ schneller zu lösen. \cite{shor}
         zu berechnen.
     \end{itemize}
 
-    \item \textbf{Verwendung der Periode $r$:}  
+    \item Verwendung der Periode $r$:
     Sobald $r$ bekannt ist, wird geprüft:  
     \begin{itemize}
         \item Falls $r$ ungerade ist, beginnt der Algorithmus erneut mit 
@@ -44,13 +44,13 @@ schneller zu lösen. \cite{shor}
         f_1 = \text{ggT}\left(a^{r/2} - 1, N\right) \quad \text{und} \quad f_2 = \text{ggT}\left(a^{r/2} + 1, N\right).
         \]  
         Der größte gemeinsame Teiler ($\text{ggT}$) wird dabei mithilfe 
-        des Euklidischen Algorithmus ermittelt. \cite{shor_klassisch} \cite{shor_klassisch2} 
+        des Euklidischen Algorithmus ermittelt \cite{shor_klassisch} \cite{shor_klassisch2}.
     \end{itemize}
 \end{enumerate}
 
 
 
-Der letzte Divisor, bevor der Rest $0$ wird, ist der gesuchte größte gemeinsame Teiler: \cite{euklid}
+Der letzte Divisor, bevor der Rest $0$ wird, ist der gesuchte größte gemeinsame Teiler \cite{euklid}:
 \[
 \text{ggT}(132, 28) = 4. 
 \] 
