@@ -72,18 +72,6 @@ d \cdot e \equiv 1 \pmod{\phi(n)}
 In diesem Fall ist $d = 167$, da $167 \cdot 23 = 3841 \equiv 1 \pmod{192}$. Der Private Key ist damit $(d, n) = (167, 221)$.
 Damit das Wort \anf{Dresden} tatsächlich verschlüsselt werden kann, wird dieses zu ASCII umgewandelt, wie in 
 Tabelle \ref{tab:encryption_dresden} in den ersten beiden Spalten dargestellt.
-% \begin{table}[h]
-%     \centering
-%     \begin{tabular}{|c|c|c|c|c|c|c|c|}
-%         \hline
-%         Buchstabe & D & r & e & s & d & e & n \\
-%         \hline
-%         ASCII & 68 & 114 & 101 & 115 & 100 & 101 & 110 \\
-%         \hline
-%     \end{tabular}
-%     \caption{ASCII-Werte der Buchstaben von \anf{Dresden}}
-%     \label{tab:ascii_dresden}
-% \end{table}
 Die Verschlüsselung erfolgt für jedes Zeichen einzeln durch:
 \[
 c = m^e \bmod n
