@@ -78,27 +78,18 @@ Der erste Rundenschlüssel ergibt sich schließlich durch Kombination der Wörte
 \textit{SubBytes} ersetzt jedes Byte des Datenblocks durch den entsprechenden Wert aus der S-Box, wobei die Bytewerte als Adressen dienen. Zum Beispiel:
 \begin{table}[H]
     \resizebox{0.3\textwidth}{!}{
-    \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+    \begin{tabular}{|c|cccccccccc|}
     \hline
        & \dots & X4 & X5 & X6 & X7 & X8 & X9 & XA & XB & \dots \\
     \hline
-    \hline
     0X & \dots & 63 & 7C & 77 & 7B & F2 & 6B & 6F & C5 & \dots \\
-    \hline
     1X & \dots & 30 & 01 & 67 & 2B & FE & D7 & AB & 76 & \dots \\
-    \hline
     2X & \dots & CA & 82 & C9 & 7D & FA & 59 & 47 & F0 & \dots \\
-    \hline
     3X & \dots & AD & D4 & A2 & AF & 9C & A8 & 51 & A3 & \dots \\
-    \hline
     4X & \dots & 40 & 8F & 92 & 9D & 38 & F5 & BC & B6 & \dots \\
-    \hline
     5X & \dots & DA & 21 & 10 & FF & F3 & D2 & CD & 0C & \dots \\
-    \hline
     6X & \dots & 13 & EC & 5F & 97 & 44 & 17 & C4 & A5 & \dots \\
-    \hline
     7X & \dots & 33 & 85 & 45 & F9 & 02 & 7F & 50 & 3C & \dots \\
-    \hline
     \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots \\
     \hline
     \end{tabular}
