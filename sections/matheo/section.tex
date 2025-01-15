@@ -75,30 +75,33 @@ Der erste Rundenschlüssel ergibt sich schließlich durch Kombination der Wörte
 \]
 
 \subsubsection{SubBytes}
-\textit{SubBytes} ersetzt jedes Byte des Datenblocks durch den entsprechenden Wert aus der S-Box, wobei die Bytewerte als Adressen dienen. Beispiel einer S-Box:
+\textit{SubBytes} ersetzt jedes Byte des Datenblocks durch den entsprechenden Wert aus der S-Box, wobei die Bytewerte als Adressen dienen. Zum Beispiel:
 \begin{table}[H]
     \resizebox{0.3\textwidth}{!}{
-    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \begin{tabular}{|c||c c|c|c|c|c|c|c|c c|}
     \hline
-    63 & 7C & 77 & 7B & F2 & 6B & 6F & C5 \\
+       & \dots & X4 & X5 & X6 & X7 & X8 & X9 & XA & XB & \dots \\
     \hline
-    30 & 01 & 67 & 2B & FE & D7 & AB & 76 \\
     \hline
-    CA & 82 & C9 & 7D & FA & 59 & 47 & F0 \\
+    0X &   & 63 & 7C & 77 & 7B & F2 & 6B & 6F & C5 &  \\
     \hline
-    AD & D4 & A2 & AF & 9C & A8 & 51 & A3 \\
+    1X &   & 30 & 01 & 67 & 2B & FE & D7 & AB & 76 &  \\
     \hline
-    40 & 8F & 92 & 9D & 38 & F5 & BC & B6 \\
+    2X &   & CA & 82 & C9 & 7D & FA & 59 & 47 & F0 &  \\
     \hline
-    DA & 21 & 10 & FF & F3 & D2 & CD & 0C \\
+    3X &   & AD & D4 & A2 & AF & 9C & A8 & 51 & A3 &  \\
     \hline
-    13 & EC & 5F & 97 & 44 & 17 & C4 & A5 \\
+    4X &   & 40 & 8F & 92 & 9D & 38 & F5 & BC & B6 &  \\
     \hline
-    33 & 85 & 45 & F9 & 02 & 7F & 50 & 3C \\
+    5X &   & DA & 21 & 10 & FF & F3 & D2 & CD & 0C &  \\
+    \hline
+    6X &   & 13 & EC & 5F & 97 & 44 & 17 & C4 & A5 &  \\
+    \hline
+    7X &   & 33 & 85 & 45 & F9 & 02 & 7F & 50 & 3C &  \\
     \hline
     \end{tabular}
     }
-    \caption{Beispiel einer S-Box im AES-Algorithmus}
+    \caption{Ausschnitt einer S-Box im AES-Algorithmus \\ („X“ ist ein Platzhalter)}
 \end{table}
 
 
