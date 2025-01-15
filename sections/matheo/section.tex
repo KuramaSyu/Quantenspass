@@ -4,7 +4,7 @@
 
 Advanced Encryption Standard (AES) ist ein symmetrischer Blockchiffre Algorithmus zur 
 Verschlüsselung sensibler Daten wie VPN Verbindungen, HTTPS Anfragen 
-(siehe Abbildung \ref{fig:http_verbindungsaufbau}) und WLAN (WPA2). 
+(siehe Abbildung~\ref{fig:http_verbindungsaufbau}) und WLAN (WPA2). 
 Entwickelt wurde er 2001 vom NIST. AES arbeitet mit Schlüssellängen von 128, 192 oder 256 Bit, 
 wobei längere Schlüssel sicherer sind. Die Blockgröße beträgt stets 128 Bit, da AES eine Blockchiffre 
 ist. Die Anzahl der Runden hängt von der Schlüssellänge ab: 
@@ -30,7 +30,7 @@ c_3  & c_7  & c_{11} & c_{15}
 \end{bmatrix}
 \]
 
-Wie in Abbildung \ref{fig:qualen_AES} dargestellt, umfasst jede Runde die Schritte \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} und \textit{Add Round Key}. 
+Wie in Abbildung~\ref{fig:qualen_AES} dargestellt, umfasst jede Runde die Schritte \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} und \textit{Add Round Key}. 
 In der letzten Runde wird \textit{MixColumns} über\-sprungen \cite{AES_Algorithmus_2} \cite{AES_Algorithmus_3} \cite{AES_Algorithmus} \cite{Blockchiffre}.
 
 \begin{figure}[H]
