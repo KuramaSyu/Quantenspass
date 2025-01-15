@@ -128,7 +128,14 @@ wie in Tabelle \ref{tab:decryption_dresden} dargestellt ist.
 \end{table}
 Damit ist die Nachricht \anf{Dresden} erfolgreich verschlüsselt und wieder entschlüsselt worden.
 
-
+\subsubsection{Welche Sicherheitsprobleme ergeben sich durch Quantencomputer?}
+Sicherheitsprobleme, bezogen auf die 1. Forschungsfrage, ergeben sich durch die
+Quantenkryptografie und speziell durch den Shors Algorithmus (Sektion \ref{sec:shor}).
+Der Grund dafür liegt in der Annahme, dass Primfaktorzerlegung ein \anf{NP\textendash Hard} Problem ist und
+damit nicht in deterministischer polynomieller Zeit gelöst werden kann. 
+Genau das ist allerdings mit dem Shors Algorithmus möglich, da dieser die Periode anhand
+einer Kongruenzgleichung bestimmt und dadurch mit dem größten gemeinsamen 
+Teiler die Primfaktoren bestimmt.
 
 % Python output
 % p=13, q=17, n=221, phi=192, e=23, d=167
