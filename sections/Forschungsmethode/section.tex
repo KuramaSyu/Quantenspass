@@ -6,6 +6,9 @@
 % ein umfassendes Verständnis der Risiken und Handlungsoptionen zu gewinnen.
 
 \section{Methodisches Vorgehen}
+Die Auswahl von RSA und AES als Analyseobjekte erfolgt aufgrund ihrer weiten Verbreitung und zentralen Rolle in modernen 
+Verschlüsselungsstandards. Die Analyse untersucht systematisch die Effizienz dieser Algorithmen unter realistischen Bedingungen, 
+indem variierende Schlüssellängen und Datenmengen verwendet werden, die repräsentative Anwendungsfälle aus der Praxis widerspiegeln.
 
 Die Untersuchung folgt einem Mixed-Methods-Ansatz, der sowohl technische als auch organisatorische Aspekte berücksichtigt. 
 Im Rahmen der technischen Analyse (FF1) werden zwei klassische Verschlüsselungsalgorithmen, RSA und AES, auf 
@@ -29,10 +32,13 @@ variierenden Bedingungen zu bewerten, welche in Tabelle \ref{tab:schluessel_date
 Die sehr spezifischen Datenmengen bei RSA beziehen sich auf die maximale Datenmenge pro Schlüssellänge. 
 Am Beispiel von 4096 Bit Verschlüsselung, würde diese 4096 Bit zu Bytes umgerechnet werden. Diesen Bytes 
 werden folgend 11 Bytes (konstant bei allen Schlüssellängen) abgezogen, da diese als sogenanntes Padding dienen. Damit ergibt sich $4096/8 - 11 = 501$. 
-Bei AES beziehen sich die Datenmengen auf gängige zu Größen, welche bei HTTPS übertragen werden, da hierbei AES mit RSA kombiniert wird 
+Bei AES beziehen sich die Datenmengen auf gängige Größen, welche bei HTTPS übertragen werden, da hierbei AES mit RSA kombiniert wird 
 (Abbildung~\ref{fig:http_verbindungsaufbau}).
-Die Ergebnisse werden mit dokumentierten Benchmarks von Quantenalgorithmen 
-wie Shor's und Grover's Algorithmus verglichen. Ergänzend werden analytische Methoden genutzt, um die theoretische 
+Die Ergebnisse werden mit Benchmarks von Quantenalgorithmen 
+wie Shor's und Grover's Algorithmus verglichen. Die Benchmarks der Quantenalgorithmen basieren auf dokumentierten Studien und 
+bekannten Zeitkomplexitätsmodellen, wie beispielsweise der Big-O-Notation. Dabei werden Unsicherheiten in der Leistungsfähigkeit 
+aktueller Quantencomputer berücksichtigt, um eine möglichst realistische Bewertung der Bedrohung durch zukünftige Entwicklungen 
+zu ermöglichen. Ergänzend werden analytische Methoden genutzt, um die theoretische 
 Effizienz dieser Quantenalgorithmen zu modellieren. Diese Berechnungen basieren auf dokumentierten Benchmarks 
 aktueller Quantencomputer und Zeitkomplexitätsmodellen, um kritische Schlüssellängen zu identifizieren, bei denen 
 bestehende Verschlüsselungsverfahren potenziell gefährdet sind.
@@ -51,6 +57,8 @@ auf präventiven Maßnahmen und ihrer zeitlichen Priorisierung. Beispielhafte In
     \item „Gibt es Branchen, die Ihrer Meinung nach besonders von der Entwicklung der Quantencomputer betroffen sein werden?“
 \end{itemize}
 
+Die Interviewfragen wurden so konzipiert, dass sie sowohl die Dringlichkeit der Einführung von Post-Quanten-Kryptografie als auch 
+konkrete Maßnahmen zur Absicherung abdecken.
 Die Ergebnisse beider Analyseschritte werden integriert, um ein umfassendes Verständnis der Risiken und 
 Handlungsoptionen zu ermöglichen. Technische Erkenntnisse und Experteneinschätzungen werden kombiniert, um 
 praxisorientierte Empfehlungen für Unternehmen zur Vorbereitung auf die Ära des Quantencomputings abzuleiten.\\
@@ -59,8 +67,30 @@ Das erwartete Ergebnis ist eine klare Einschätzung der Auswirkungen von Quanten
 auf klassische Verschlüsselungsverfahren und die Identifikation von Risiken sowie 
 Handlungsmöglichkeiten für Unternehmen. Durch das Benchmarking wird erwartet, dass RSA auf klassischen Computern nahezu 
 unbrechbar ist, jedoch auf Quantencomputern exponentiell schneller gebrochen werden kann. 
-Bei AES wird erwartet, dass der Algorithmus auf klassischen Computern 
-eine hohe Sicherheit bietet, während Grover's Algorithmus die Effizienz 
+Bei AES wird erwartet, dass der Algorithmus auf klassischen Computern eine hohe Sicherheit bietet, während Grover's Algorithmus die Effizienz 
 der Entschlüsselung ungefähr halbiert, jedoch nicht exponentiell verringert.
-Die Ergebnisse sollen praxisnahe Empfehlungen 
-für den Übergang zu post-quanten-kryptografischen Standards liefern.
+Die Ergebnisse dieser Untersuchung zielen darauf ab, Unternehmen eine fundierte Grundlage für die strategische Planung in Hinblick auf 
+Quantencomputing zu bieten. Dazu gehören die Modellierung kritischer Schlüssellängen, die Einschätzung der technischen und organisatorischen 
+Herausforderungen sowie die Ableitung konkreter Handlungsschritte, um Sicherheitsstandards rechtzeitig anzupassen.
+
+\subsection{Selbstkritik}
+
+Bei der methodischen Herangehensweise unserer Untersuchung sind wir uns der Grenzen und theoretischen Natur der Arbeit bewusst. 
+Ein wesentlicher Punkt ist, dass die praktische Umsetzung unserer Ergebnisse stark davon abhängt, Zugang zu einem ausreichend 
+leistungsfähigen Quantencomputer zu erhalten. Aktuelle Quantencomputer befinden sich noch in der Entwicklung und weisen, trotz 
+beeindruckender Fortschritte, Einschränkungen hinsichtlich ihrer Skalierbarkeit und Fehlerkorrektur auf. Unsere Analysen basieren 
+daher überwiegend auf theoretischen Modellen und dokumentierten Benchmarks, die nicht zwangsläufig die tatsächliche Leistung 
+zukünftiger Quantencomputer widerspiegeln.
+
+Ein weiterer kritischer Aspekt ist die Fokussierung auf idealisierte Bedingungen. Beispielsweise setzen unsere Vergleiche zwischen 
+klassischen und quantenbasierten Algorithmen eine störungsfreie und effiziente Nutzung von Quantencomputern voraus, was in der
+Realität durch technische Herausforderungen wie Dekohärenz und Rauschunterdrückung erschwert wird.
+
+Zudem erheben wir keinen Anspruch auf Vollständigkeit bei der Auswahl der analysierten Algorithmen und Szenarien. Während wir uns 
+auf RSA und AES konzentriert haben, existieren zahlreiche andere kryptografische Verfahren und Kombinationen, deren Untersuchung 
+ebenso relevant sein könnte.
+
+Unsere Interviews und Befragungen liefern wertvolle Einblicke, sind jedoch von subjektiven Einschätzungen der Teilnehmenden geprägt, 
+was die Generalisierbarkeit der Ergebnisse einschränkt. Diese Selbstkritik soll dazu beitragen, die Kontexte und Grenzen unserer Arbeit
+klar zu kommunizieren und als Grundlage für weiterführende Forschungen zu dienen, die die theoretischen Annahmen dieser Studie mit realen 
+Szenarien abgleichen können.
