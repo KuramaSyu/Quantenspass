@@ -25,9 +25,9 @@ wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \
 	Nach dieser Umstellung lässt sich folgender Algorithmus herleiten:
 	\begin{enumerate}
 		\item Vergleichsfunktion definieren:\\%Assymetrische Klammern in diesen Teil sind, weil sie Intervalle sind
-		Der Algorithmus funktioniert, indem man die gegebene Sequenz mit Sinus- und Kosinuskurven von verschiedenen Frequenzen vergleicht \cite{reducible_discrete_2023}. Da der Cosinus den Real- und der Sinus den Imaginärteil stellt und diese sich nicht gegenseitig beeinflussen, wenn \(a \in \mathbb{R}^N\), kann man diese auch getrennt beachten.
+		Der Algorithmus funktioniert, indem man die gegebene Sequenz mit Sinus- und Kosinuskurven von verschiedenen Frequenzen vergleicht \cite{reducible_discrete_2023}. Da der Kosinus den Real- und der Sinus den Imaginärteil stellt und diese sich nicht gegenseitig beeinflussen, wenn \(a \in \mathbb{R}^N\), kann man diese auch getrennt beachten.
 		\[f_k(x) = \cos\left(\frac{2\pi k}{N}\cdot x\right) + \imath \cdot\sin\left(\frac{2\pi k}{N}\cdot x\right) \]
-		Die Winkelfunktionen sollen im Intervall \([0,N)\), also im Intervall der Eingangssequenz, \(k\) ganze Perioden durchlaufen. Der Cosinus (Sinus ist analog) durchläuft eine Periode im Intervall \([0,2\pi)\). Wenn man das Argument \(x\) mit \(2\pi\), multipliziert wird das Periodenintervall zu \([0,1)\). Durch Division mit \(N\) wird das Intervall zum verlangten \([0,N)\). Um \(k\) Perioden im Intervall zu erhalten, Multipliziert man mit \(k\), sodass das Intervall \(\left[0,\frac{N}{k}\right) ~k\)-mal in \([0,N)\) passt.
+		Die Winkelfunktionen sollen im Intervall \([0,N)\), also im Intervall der Eingangssequenz, \(k\) ganze Perioden durchlaufen. Der Kosinus (Sinus ist analog) durchläuft eine Periode im Intervall \([0,2\pi)\). Wenn man das Argument \(x\) mit \(2\pi\), multipliziert wird das Periodenintervall zu \([0,1)\). Durch Division mit \(N\) wird das Intervall zum verlangten \([0,N)\). Um \(k\) Perioden im Intervall zu erhalten, Multipliziert man mit \(k\), sodass das Intervall \(\left[0,\frac{N}{k}\right) ~k\)-mal in \([0,N)\) passt.
 		\item Vergleichssequenzen erstellen:\\
 		Mit der Funktion können wir die \(k\)-te Vergleichssequenz erhalten, indem wir \(f\) an denselben Stellen wie \(a\) abtasten.
 		\[b_k = \left(f_k(0),f_k(1),\dots,f_k(N-1)\right) \]
