@@ -61,13 +61,13 @@ DFT operiert an einer diskreten Folge an komplexen Zahlen
 \end{itemize}
 \subsubsection{Quanten-Fourier-Transformation: QFT}\label{sec:QFT}
 QFT ist die Anwendung von \hyperref[sec:DFT]{DFT} in auf Quantencomputern. Sie hat \(n\) Qubits als Eingang, womit die Eingangssequenz aus \(N = 2^n\) Basiszuständen besteht: \(\left(|0\rangle,|1\rangle,\dots,|N-1\rangle\right)\). Der Quantenschaltkreis ist in Abbildung~\ref{fig:QFT_n_Qubits} zu sehen.
-\begin{figure}[hb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.45\textwidth]{sections/felix/Q_fourier_nqubits.png}
 	\caption{QFT für n Qubits (ohne Umkehrung der Reihenfolge der Zustände der Ausgaben) \cite{noauthor_q_fourier_nqubitspng_2018}}
 	\label{fig:QFT_n_Qubits}
 \end{figure}
-\\Wobei \(\left[0.x_1 x_2 \dots x_n\right]\) Notation für \(\frac{x_1}{2}+\frac{x_2}{4}+\cdots+\frac{x_n}{2^n}\) ist.
+Wobei \(\left[0.x_1 x_2 \dots x_n\right]\) Notation für \(\frac{x_1}{2}+\frac{x_2}{4}+\cdots+\frac{x_n}{2^n}\) ist.
 Verwendet werden das Hadamard-Gatter \(H = \frac{1}{\sqrt{2}}\begin{pmatrix}
 	1 &  1\\
 	1 & -1
@@ -76,7 +76,7 @@ Verwendet werden das Hadamard-Gatter \(H = \frac{1}{\sqrt{2}}\begin{pmatrix}
 	0 & e^{\frac{2\pi\imath}{2^m}}\\
 \end{pmatrix}\).
 Eine Schaltung für \(3\) Qubits und somit \(2^3 = 8 = N\) ist in Abbildung~\ref{fig:QFT_3_Qubits} zu sehen \cite{noauthor_list_2024}.
-\begin{figure}[hb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.45\textwidth]{sections/felix/Q_fourier_3qubits.png}
 	\caption{QFT für 3 Qubits (ohne Umkehrung der Reihenfolge der Zustände der Ausgaben) \cite{noauthor_q_fourier_3qubitspng_2018}}
