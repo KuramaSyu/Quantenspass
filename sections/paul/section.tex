@@ -107,25 +107,25 @@ Die Entschlüsselung erfolgt mit dem Private Key ($d, n$) analog durch:
 \[
 m = c^d \bmod n
 \]
-wie in Tabelle \ref{tab:decryption_dresden} dargestellt ist.
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|c|c|c|c|}
-        \hline
-        $c$ & $c^d \bmod n$ & m (ASCII) & Buchstabe \\
-        \hline
-        204 & $204^{167} \bmod 221$ & 68 & D \\
-        160 & $160^{167} \bmod 221$ & 114 & r \\
-        186 & $186^{167} \bmod 221$ & 101 & e \\
-        123 & $123^{167} \bmod 221$ & 115 & s \\
-        42 & $42^{167} \bmod 221$ & 100 & d \\
-        186 & $186^{167} \bmod 221$ & 101 & e \\
-        219 & $219^{167} \bmod 221$ & 110 & n \\
-        \hline
-    \end{tabular}
-    \caption{Entschlüsselung der einzelnen Buchstaben}
-    \label{tab:decryption_dresden}
-\end{table}
+%%wie in Tabelle \ref{tab:decryption_dresden} dargestellt ist.
+%%\begin{table}[H]
+%%    \centering
+%%    \begin{tabular}{|c|c|c|c|}
+%%        \hline
+%%        $c$ & $c^d \bmod n$ & m (ASCII) & Buchstabe \\
+%%        \hline
+%%        204 & $204^{167} \bmod 221$ & 68 & D \\
+%%        160 & $160^{167} \bmod 221$ & 114 & r \\
+%%        186 & $186^{167} \bmod 221$ & 101 & e \\
+%%        123 & $123^{167} \bmod 221$ & 115 & s \\
+%%        42 & $42^{167} \bmod 221$ & 100 & d \\
+%%        186 & $186^{167} \bmod 221$ & 101 & e \\
+%%        219 & $219^{167} \bmod 221$ & 110 & n \\
+%%        \hline
+%%    \end{tabular}
+%%    \caption{Entschlüsselung der einzelnen Buchstaben}
+%%    \label{tab:decryption_dresden}
+%%\end{table}
 Damit ist die Nachricht \anf{Dresden} erfolgreich verschlüsselt und wieder entschlüsselt worden.
 
 \subsubsection{Welche Sicherheitsprobleme ergeben sich durch Quantencomputer?}
