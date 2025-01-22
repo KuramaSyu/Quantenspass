@@ -51,11 +51,11 @@ $N_1 = 132$ und $N_2 = 28$ wird der Algorithmus wie folgt angewendet:
 
 \subsection{RSA Algorithmus}
 \subsubsection{Grundlegende Funktionsweise von RSA}
-RSA ist ein asymmetrischer Verschlüsselungsalgorithmus.
-RSA wird benötigt, um eine gesicherte Kommunikation zwischen mindestens zwei Parteien aufzubauen, da 
-es andernfalls keine Möglichkeit gäbe, den Schlüssel für die symmetrische Verschlüsselung \anf{abhörsicher} zu übertragen.
-Die Sicherheit beruht darauf, dass Faktorisierung von Primzahlen, da dieses ein \anf{NP\textendash Hard} Problem ist\cite{moolchad_leveraging_nodate},
-also nicht in polynomieller Zeit gelöst werden kann. 
+RSA ist ein verschlüsselt asymmetrisch und wird benötigt, um eine gesicherte Kommunikation 
+zwischen mindestens zwei Parteien aufzubauen.
+Andernfalls gäbe es keine Möglichkeit, den Schlüssel für die symmetrische Verschlüsselung \anf{abhörsicher} zu übertragen.
+Die Sicherheit beruht darauf, dass die Faktorisierung von Primzahlen ein \anf{NP\textendash Hard} Problem ist\cite{moolchad_leveraging_nodate},
+und damit nicht polynomieller Zeit gelöst werden kann. 
 
 \subsubsection{Verschlüsselung mit RSA}
 Die zwei Primfaktoren, welche für RSA benötigt werden, 
@@ -103,30 +103,28 @@ Für das Wort \anf{Dresden} ergibt sich die Verschlüsselung zu $[204, 160, 186,
 \end{table}
 
 \subsubsection{Entschlüsselung mit RSA}
-Die Entschlüsselung erfolgt mit dem Private Key ($d, n$) analog durch:
-\[
-m = c^d \bmod n
-\]
-%%wie in Tabelle \ref{tab:decryption_dresden} dargestellt ist.
-%%\begin{table}[H]
-%%    \centering
-%%    \begin{tabular}{|c|c|c|c|}
-%%        \hline
-%%        $c$ & $c^d \bmod n$ & m (ASCII) & Buchstabe \\
-%%        \hline
-%%        204 & $204^{167} \bmod 221$ & 68 & D \\
-%%        160 & $160^{167} \bmod 221$ & 114 & r \\
-%%        186 & $186^{167} \bmod 221$ & 101 & e \\
-%%        123 & $123^{167} \bmod 221$ & 115 & s \\
-%%        42 & $42^{167} \bmod 221$ & 100 & d \\
-%%        186 & $186^{167} \bmod 221$ & 101 & e \\
-%%        219 & $219^{167} \bmod 221$ & 110 & n \\
-%%        \hline
-%%    \end{tabular}
-%%    \caption{Entschlüsselung der einzelnen Buchstaben}
-%%    \label{tab:decryption_dresden}
-%%\end{table}
-Damit ist die Nachricht \anf{Dresden} erfolgreich verschlüsselt und wieder entschlüsselt worden.
+Die Entschlüsselung erfolgt analog mit dem Private Key ($d, n$) durch:
+$ m = c^d \bmod n $
+% wie in Tabelle \ref{tab:decryption_dresden} dargestellt ist.
+% \begin{table}[H]
+%    \centering
+%    \begin{tabular}{|c|c|c|c|}
+%        \hline
+%        $c$ & $c^d \bmod n$ & m (ASCII) & Buchstabe \\
+%        \hline
+%        204 & $204^{167} \bmod 221$ & 68 & D \\
+%        160 & $160^{167} \bmod 221$ & 114 & r \\
+%        186 & $186^{167} \bmod 221$ & 101 & e \\
+%        123 & $123^{167} \bmod 221$ & 115 & s \\
+%        42 & $42^{167} \bmod 221$ & 100 & d \\
+%        186 & $186^{167} \bmod 221$ & 101 & e \\
+%        219 & $219^{167} \bmod 221$ & 110 & n \\
+%        \hline
+%    \end{tabular}
+%    \caption{Entschlüsselung der einzelnen Buchstaben}
+%    \label{tab:decryption_dresden}
+% \end{table}
+Die Nachricht \anf{Dresden} wurde damit erfolgreich ver\textendash\ und entschlüsselt.
 
 \subsubsection{Welche Sicherheitsprobleme ergeben sich durch Quantencomputer?}
 Sicherheitsprobleme, bezogen auf die 1. Forschungsfrage, ergeben sich durch die
