@@ -6,8 +6,7 @@ DFT operiert an einer diskreten Folge an komplexen Zahlen
 
 \(a = (a_0,\dots,a_{N-1}) \in \mathbb{C}^N\) (\(a_k \in \mathbb{C}\)) und gibt eine Folge\\
 \(\hat{a} = (\hat{a}_0,\dots,\hat{a}_{N-1}) \in \mathbb{C}^N\) (genannt \anf{diskret Fourier-Transformierte})
-wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \quad \text{für}\quad k = 0,\dots,N-1\] oder als Matrix-Vektor-Produkt \cite{noauthor_diskrete_2024}:
-\[\hat{a} = W\cdot a \quad \text{mit} \quad W[k,j] = e^{-2\pi \imath \cdot\frac{jk}{N}}\]
+\[\text{wobei}\quad\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \quad \text{für}\quad k = 0,\dots,N-1\]
 
 \subsubsection{Interpretation der Fourier-Transformation:}
 \begin{itemize}
@@ -16,10 +15,10 @@ wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \
 	\[f[n] = \sum_{k=0}^{N-1}\left(\text{Re}(\hat{a}^\prime_k)\cos\left(\frac{2\pi kn}{N}\right)+\text{Im}(\hat{a}^\prime_k)\sin\left(\frac{2\pi kn}{N}\right)\right)\]
 	wobei \(\hat{a}\) zur Vereinfachung und besseren Relation normiert wird mit \(\hat{a}^\prime = \frac{\hat{a}}{N}\).
 	\(f[n]\) ist eine Summe von Kosinus- und Sinusfunktionen mit einer Frequenz von \(2\pi\cdot\frac{k}{N}\), wobei für jeden Wert \(\hat{a}^\prime_k\) der Realteil Koeffizient der jeweiligen Kosinusfunktion und der negative Imaginärteil Koeffizient der jeweiligen Sinusfunktion ist.
-	Eine alternative Interpretation der Werte der diskret Fourier-Transformierten ist, das \(\left\lvert \hat{a}^\prime_k\right\rvert \) der Amplitude und die Phase \(\quad\arg(\hat{a}^\prime_k) = \arctan\left(\frac{\text{Im}(\hat{a}^\prime_k)}{\text{Re}(\hat{a}^\prime_k)}\right)\quad \) entspricht.
+	Eine alternative Interpretation der Werte der diskret Fourier-Transformierten ist, das \(\left\lvert \hat{a}^\prime_k\right\rvert \) der Amplitude und der Phase \(\arg(\hat{a}^\prime_k) = \arctan\left(\frac{\text{Im}(\hat{a}^\prime_k)}{\text{Re}(\hat{a}^\prime_k)}\right)\quad \) entspricht.
 	\[f[n] = \sum_{k=0}^{N-1}\left\lvert\hat{a}^\prime_k\right\rvert\cdot\cos\left(\frac{2\pi kn}{N}+\arg(\hat{a}^\prime_k)\right)\]
 	Dies ist eine Zerlegung der Eingangssequenz in Frequenzen.
-	\item Alternative Berechnung der diskreten Fourier Transformation:\\
+	\item Alternative Berechnung von DFT:\\
 	Eine menschenfreundlichere Methode kann man erhalten, wenn man erhalten, indem man die Eulersche Formel anwendet:
 	\[e^{-2\pi \imath \cdot\frac{jk}{N}} = \cos\left(\frac{2\pi jk}{N}\right) + \imath\cdot\sin\left(\frac{2\pi jk}{N}\right)\]
 	Nach dieser Umstellung lässt sich folgender Algorithmus herleiten:
@@ -35,9 +34,9 @@ wobei \[\hat{a}_k = \sum_{j=0}^{N-1}e^{-2\pi \imath\cdot\frac{jk}{N}}\cdot a_j \
 		Um zu erfahren, welchen Teil die \(k\)-te Frequenz in der Eingangssequenz spielt, nimmt man die Summe der Produkte von jedem Element \(a_j\) der Eingangssequenz mit den korrespondierenden \({(b_k)}_j\), d.h. das Skalarprodukt
 		\[\hat{a}_k = a \cdot b_k\]
 		\item Spezialfall \(k = 0\):\\
-		Schon in der Ausgangsformel kann man sehen, das	für \(k = 0\) gilt: \[e^{-2\pi \imath \cdot\frac{j\cdot 0}{N}} = e^0 = 1\]
-		weshalb sich \(\hat{a}_0\) zu
-		\[\hat{a}_0 = \sum_{j=0}^{N-1} a_j\] zusammenfassen lässt. Womit \(\hat{a}^\prime_0 \) dem arithmetischen Mittel von \(a\) entspricht.
+		Schon in der Ausgangsformel kann man sehen, dass \[\text{für \(k = 0\) gilt:}\quad e^{-2\pi \imath \cdot\frac{j\cdot 0}{N}} = e^0 = 1\qquad\qquad\qquad\]
+		\[\text{weshalb sich \(\hat{a}_0\) zu}\quad
+		\hat{a}_0 = \sum_{j=0}^{N-1} a_j\qquad\qquad\qquad\] zusammenfassen lässt. Womit \(\hat{a}^\prime_0 \) dem arithmetischen Mittel von \(a\) entspricht.
 	\end{enumerate}
  	%Python algo
 	%j aj âj
@@ -76,27 +75,25 @@ Verwendet werden das Hadamard-Gatter \(H = \frac{1}{\sqrt{2}}\begin{pmatrix}
 	1 & 0\\
 	0 & e^{\frac{2\pi\imath}{2^m}}\\
 \end{pmatrix}\).
-Eine Schaltung für \(3\) Qubits und somit \(2^3 = 8 = N\) ist in Abbildung~\ref{fig:QFT_3_Qubits} zu sehen \cite{noauthor_list_2024}.\\
+Eine Schaltung für \(3\) Qubits und somit \(2^3 = 8 = N\) ist in Abbildung~\ref{fig:QFT_3_Qubits} zu sehen \cite{noauthor_list_2024}.
 \begin{figure}[hb]
 	\centering
 	\includegraphics[width=0.45\textwidth]{sections/felix/Q_fourier_3qubits.png}
 	\caption{QFT für 3 Qubits (ohne Umkehrung der Reihenfolge der Zustände der Ausgaben) \cite{noauthor_q_fourier_3qubitspng_2018}}
 	\label{fig:QFT_3_Qubits}
 \end{figure}
-\\Diese Schaltung lässt sich mithilfe der Identitätsmatrix \(I = \begin{pmatrix}
+Diese Schaltung lässt sich mithilfe der Identitätsmatrix \(I = \begin{pmatrix}
 	1 & 0 \\
 	0 & 1 
-\end{pmatrix}\) und der Tauschmatrix \(S = \begin{pmatrix}
+\end{pmatrix}\) und der Tauschmatrix \(S = \left(\begin{smallmatrix}
 	1 & 0 & 0 & 0\\
 	0 & 0 & 1 & 0\\
 	0 & 1 & 0 & 0\\
 	0 & 0 & 0 & 1
-\end{pmatrix}\) in der Gleichung
-\begin{multline}
-	W = (S\oplus I)\cdot (I \oplus H \oplus I) \cdot (R_2 \oplus I) \cdot (I \oplus S) \cdot (I\oplus R_3)\\ \cdot (S \oplus I) \cdot (I \oplus H \oplus I) \cdot (R_2 \oplus I) \cdot (H \oplus I \oplus I)
-\end{multline}
-\[QFT_8 |x\rangle = W \cdot \left(|x_1\rangle \oplus |x_2\rangle \oplus |x_3\rangle\right)\]
-\[\text{oder auch als}\quad QFT_8 |x\rangle = \frac{1}{\sqrt{8}}\sum_{j=0}^{8-1} e^{\frac{2\pi \imath x j}{8}}|j\rangle\]
+\end{smallmatrix}\right)\) in der Gleichung\\\\
+\(W = (S\oplus I)\cdot (I \oplus H \oplus I) \cdot (R_2 \oplus I) \cdot (I \oplus S) \cdot (I\oplus R_3)\\ \cdot (S \oplus I) \cdot (I \oplus H \oplus I) \cdot (R_2 \oplus I) \cdot (H \oplus I \oplus I)\)\\\\
+\(QFT_8 |x\rangle = W \cdot \left(|x_1\rangle \oplus |x_2\rangle \oplus |x_3\rangle\right)\)
+\[\text{oder auch als}\quad\quad QFT_8 |x\rangle = \frac{1}{\sqrt{8}}\sum_{j=0}^{8-1} e^{\frac{2\pi \imath x j}{8}}|j\rangle\qquad\qquad\qquad\qquad\]
 darstellen, sodass für ein allgemeines \(N = 2^n\) gilt \cite{noauthor_quanten-fouriertransformation_2024}:
 \[QFT_N |x\rangle = \frac{1}{\sqrt{N}}\sum_{j=0}^{N-1} e^{\frac{2\pi \imath x j}{N}}|j\rangle\]
 Dies unterscheidet sich von der Formel für die \hyperref[sec:DFT]{DFT} nur
